@@ -1,0 +1,67 @@
+2025-06-01 23:48:55,486 - INFO - Scanning folder /home/bhan/projects/wod/scripts/../data/raw for metadata and variable names
+2025-06-01 23:49:39,234 - INFO - Finished scanning folder. Found 51 metadata keys and 8 variables.
+2025-06-01 23:49:39,234 - INFO - Metadata Keys: ['absolute humidity', 'accession number', 'air temperature (dry bulb)', 'air temperature (wet bulb)', 'barometric pressure', 'bottom depth', 'cast', 'cast direction', 'cast duration', 'cloud cover', 'cloud type', 'concentration_informa', 'country', 'database origin', 'depth unit', 'institute', 'institution', 'instrument', 'investigator', 'latitude', 'longitude', 'measure method', 'ocean weather station', 'original units', 'originators cruise id', 'originators flag set to use', 'originators station id', 'pathlength', 'platform', 'probe_type', 'project', 'real time data', 'recorder type', 'reference/sea surface temper', 'scale', 'sea state', 'secchi disk depth', 'standard depth equation used', 'systematic_fix', 'time', 'uncalibrated', 'units_special', 'visibility', 'water color', 'wave direction', 'wave height', 'wave period', 'weather condition', 'wind direction', 'wind force', 'wind speed']
+2025-06-01 23:49:39,234 - INFO - Variable Names: ['chlorophyl', 'depth', 'nitrate', 'oxygen', 'ph', 'salinity', 'temperatur', 'transmissi']
+2025-06-01 23:49:39,234 - INFO - Metadata Key Frequencies:
+2025-06-01 23:49:39,234 - INFO -   instrument: 883527
+2025-06-01 23:49:39,234 - INFO -   database origin: 564042
+2025-06-01 23:49:39,234 - INFO -   originators station id: 777589
+2025-06-01 23:49:39,234 - INFO -   latitude: 1155722
+2025-06-01 23:49:39,234 - INFO -   country: 1155722
+2025-06-01 23:49:39,235 - INFO -   platform: 1023248
+2025-06-01 23:49:39,235 - INFO -   cast: 1155722
+2025-06-01 23:49:39,235 - INFO -   longitude: 1155722
+2025-06-01 23:49:39,235 - INFO -   time: 1117111
+2025-06-01 23:49:39,235 - INFO -   accession number: 1142749
+2025-06-01 23:49:39,235 - INFO -   project: 176288
+2025-06-01 23:49:39,235 - INFO -   institute: 566867
+2025-06-01 23:49:39,235 - INFO -   probe_type: 1155722
+2025-06-01 23:49:39,235 - INFO -   wind speed: 72067
+2025-06-01 23:49:39,235 - INFO -   wind direction: 91054
+2025-06-01 23:49:39,235 - INFO -   reference/sea surface temper: 570
+2025-06-01 23:49:39,235 - INFO -   barometric pressure: 83016
+2025-06-01 23:49:39,235 - INFO -   weather condition: 45004
+2025-06-01 23:49:39,235 - INFO -   air temperature (dry bulb): 75822
+2025-06-01 23:49:39,235 - INFO -   air temperature (wet bulb): 43691
+2025-06-01 23:49:39,235 - INFO -   visibility: 24981
+2025-06-01 23:49:39,235 - INFO -   scale: 144615
+2025-06-01 23:49:39,235 - INFO -   bottom depth: 612207
+2025-06-01 23:49:39,235 - INFO -   investigator: 104500
+2025-06-01 23:49:39,235 - INFO -   sea state: 34250
+2025-06-01 23:49:39,235 - INFO -   originators cruise id: 538
+2025-06-01 23:49:39,235 - INFO -   cloud cover: 47299
+2025-06-01 23:49:39,235 - INFO -   cloud type: 26026
+2025-06-01 23:49:39,235 - INFO -   cast duration: 22020
+2025-06-01 23:49:39,235 - INFO -   wave period: 18284
+2025-06-01 23:49:39,235 - INFO -   wave height: 27455
+2025-06-01 23:49:39,235 - INFO -   wave direction: 8575
+2025-06-01 23:49:39,235 - INFO -   original units: 155908
+2025-06-01 23:49:39,235 - INFO -   cast direction: 23259
+2025-06-01 23:49:39,235 - INFO -   concentration_informa: 70152
+2025-06-01 23:49:39,235 - INFO -   originators flag set to use: 78828
+2025-06-01 23:49:39,235 - INFO -   pathlength: 1617
+2025-06-01 23:49:39,235 - INFO -   absolute humidity: 677
+2025-06-01 23:49:39,235 - INFO -   water color: 11315
+2025-06-01 23:49:39,235 - INFO -   secchi disk depth: 16506
+2025-06-01 23:49:39,235 - INFO -   wind force: 5206
+2025-06-01 23:49:39,235 - INFO -   real time data: 183320
+2025-06-01 23:49:39,235 - INFO -   recorder type: 20989
+2025-06-01 23:49:39,235 - INFO -   uncalibrated: 30500
+2025-06-01 23:49:39,235 - INFO -   standard depth equation used: 1218
+2025-06-01 23:49:39,235 - INFO -   systematic_fix: 2839
+2025-06-01 23:49:39,235 - INFO -   measure method: 772
+2025-06-01 23:49:39,235 - INFO -   units_special: 241
+2025-06-01 23:49:39,235 - INFO -   ocean weather station: 879
+2025-06-01 23:49:39,235 - INFO -   institution: 504
+2025-06-01 23:49:39,235 - INFO -   depth unit: 405
+2025-06-01 23:49:39,235 - INFO - Variable Name Frequencies:
+2025-06-01 23:49:39,235 - INFO -   temperatur: 1153964
+2025-06-01 23:49:39,235 - INFO -   depth: 1154879
+2025-06-01 23:49:39,235 - INFO -   salinity: 1122305
+2025-06-01 23:49:39,235 - INFO -   oxygen: 217890
+2025-06-01 23:49:39,235 - INFO -   nitrate: 70464
+2025-06-01 23:49:39,235 - INFO -   chlorophyl: 94949
+2025-06-01 23:49:39,235 - INFO -   transmissi: 3794
+2025-06-01 23:49:39,235 - INFO -   ph: 235
+
+2025-06-05 21:37:12,012 - INFO - Processing folder /home/bhan/projects/wod/scripts/../data/raw for predefined schema ingestion
