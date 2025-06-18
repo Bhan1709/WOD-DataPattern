@@ -1,6 +1,7 @@
-2025-06-06 21:42:44,707 - INFO - 
+2025-06-17 23:39:20,382 - INFO - 
 Summary for table: casts
-2025-06-06 21:42:45,301 - INFO - <class 'pandas.core.frame.DataFrame'>
+2025-06-17 23:39:20,915 - INFO - 
+<class 'pandas.core.frame.DataFrame'>
 RangeIndex: 1155722 entries, 0 to 1155721
 Data columns (total 9 columns):
  #   Column        Non-Null Count    Dtype         
@@ -17,7 +18,8 @@ Data columns (total 9 columns):
 dtypes: datetime64[us](1), int32(1), object(7)
 memory usage: 74.9+ MB
 
-2025-06-06 21:42:46,037 - INFO -        latitude longitude     year    month      day     time bottom depth          cast                   timestamp
+2025-06-17 23:39:21,694 - INFO - 
+       latitude longitude     year    month      day     time bottom depth          cast                   timestamp
 count   1155722   1155722  1155722  1155722  1155722  1117111       612207  1.155722e+06                     1155722
 unique   363924    492058       63       12       32    54477        20594           NaN                         NaN
 top       58.10    -12.05     1999        8        6      0.0          42.           NaN                         NaN
@@ -29,70 +31,58 @@ min         NaN       NaN      NaN      NaN      NaN      NaN          NaN  6.05
 75%         NaN       NaN      NaN      NaN      NaN      NaN          NaN  1.579440e+07         2010-06-29 15:18:36
 max         NaN       NaN      NaN      NaN      NaN      NaN          NaN  2.282467e+07         2024-12-21 22:57:00
 std         NaN       NaN      NaN      NaN      NaN      NaN          NaN  5.088502e+06                         NaN
-2025-06-06 21:42:46,080 - INFO - 
+2025-06-17 23:39:21,739 - INFO - 
 Summary for table: features
-2025-06-06 21:42:49,555 - INFO - <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 31346527 entries, 0 to 31346526
+2025-06-17 23:39:24,460 - INFO - 
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 30692009 entries, 0 to 30692008
 Data columns (total 9 columns):
- #   Column      Dtype  
----  ------      -----  
- 0   chlorophyl  float64
- 1   depth       float64
- 2   nitrate     float64
- 3   oxygen      float64
- 4   ph          float64
- 5   salinity    float64
- 6   temperatur  float64
- 7   transmissi  float64
- 8   cast        int32  
+ #   Column          Dtype  
+---  ------          -----  
+ 0   chlorophyll     float64
+ 1   depth           float64
+ 2   nitrate         float64
+ 3   oxygen          float64
+ 4   ph              float64
+ 5   salinity        float64
+ 6   temperature     float64
+ 7   transmissivity  float64
+ 8   cast            int32  
 dtypes: float64(8), int32(1)
-memory usage: 2.0 GB
+memory usage: 1.9 GB
 
-2025-06-06 21:42:55,316 - INFO -          chlorophyl         depth       nitrate        oxygen           ph      salinity    temperatur     transmissi          cast
-count  2.213716e+06  3.017307e+07  13133.000000  7.144755e+06  2652.000000  2.927420e+07  3.015468e+07  254676.000000  3.134653e+07
-mean   9.665283e-01  3.753661e+02     14.408317  2.034175e+02     8.009086  3.375635e+01  1.028479e+01       0.405948  1.132387e+07
-std    3.287267e+00  7.168074e+02     15.891624  8.352682e+01     0.210690  3.951767e+00  7.881915e+00       0.100869  5.381484e+06
-min   -2.760000e-01  0.000000e+00     -0.000000  0.000000e+00     7.500000 -9.000000e+00 -3.000000e+00       0.040200  6.058060e+05
-25%    4.250000e-02  3.500000e+01      1.628000  1.579000e+02     7.792662  3.365300e+01  3.873500e+00       0.368000  7.672527e+06
-50%    1.613000e-01  8.000000e+01      4.467000  2.100000e+02     8.080000  3.455700e+01  8.758000e+00       0.375000  1.128145e+07
-75%    5.870000e-01  3.500000e+02     28.667000  2.591000e+02     8.189000  3.502900e+01  1.519000e+01       0.410000  1.558582e+07
-max    4.999400e+01  9.000000e+03     46.692000  5.230000e+02     8.480000  5.107340e+01  3.491000e+01       8.665000  2.282467e+07
-2025-06-06 21:42:55,810 - INFO - 
+2025-06-17 23:39:29,304 - INFO - 
+        chlorophyll         depth       nitrate        oxygen           ph      salinity   temperature  transmissivity          cast
+count  2.213716e+06  2.953713e+07  13133.000000  7.099224e+06  2652.000000  2.869015e+07  2.951922e+07   254676.000000  3.069201e+07
+mean   9.665283e-01  3.754633e+02     14.408317  2.032742e+02     8.009086  3.373941e+01  1.021667e+01        0.405948  1.145701e+07
+std    3.287267e+00  7.185115e+02     15.891624  8.366470e+01     0.210690  3.979019e+00  7.864318e+00        0.100869  5.332075e+06
+min   -2.760000e-01  0.000000e+00     -0.000000  0.000000e+00     7.500000 -9.000000e+00 -3.000000e+00        0.040200  6.058060e+05
+25%    4.250000e-02  3.500000e+01      1.628000  1.575000e+02     7.792662  3.364070e+01  3.826300e+00        0.368000  7.847742e+06
+50%    1.613000e-01  8.000000e+01      4.467000  2.098000e+02     8.080000  3.455200e+01  8.701000e+00        0.375000  1.135628e+07
+75%    5.870000e-01  3.500000e+02     28.667000  2.590000e+02     8.189000  3.501900e+01  1.508100e+01        0.410000  1.563902e+07
+max    4.999400e+01  9.000000e+03     46.692000  5.230000e+02     8.480000  5.107340e+01  3.491000e+01        8.665000  2.282467e+07
+2025-06-17 23:39:29,762 - INFO - 
 Null summary for table casts:
-2025-06-06 21:42:55,811 - INFO - 
+2025-06-17 23:39:29,763 - INFO - 
               Null Count  Percent
 bottom depth      543515    47.03
 time               38611     3.34
-2025-06-06 21:42:57,978 - INFO - 
+2025-06-17 23:39:33,598 - INFO - 
 Null summary for table features:
-2025-06-06 21:42:57,979 - INFO - 
-            Null Count  Percent
-ph            31343875    99.99
-nitrate       31333394    99.96
-transmissi    31091851    99.19
-chlorophyl    29132811    92.94
-oxygen        24201772    77.21
-salinity       2072325     6.61
-temperatur     1191846     3.80
-depth          1173460     3.74
-2025-06-07 00:13:49,131 - INFO - Saved trend plot for chlorophyl as preclean_trend_chlorophyl.png
-2025-06-07 01:32:29,411 - INFO - Saved trend plot for depth as preclean_trend_depth.png
-2025-06-07 01:32:41,272 - INFO - Saved trend plot for nitrate as preclean_trend_nitrate.png
-2025-06-07 01:48:55,212 - INFO - Saved trend plot for oxygen as preclean_trend_oxygen.png
-2025-06-07 01:49:05,273 - INFO - Saved trend plot for ph as preclean_trend_ph.png
-2025-06-07 10:02:38,541 - INFO - Saved trend plot for salinity as preclean_trend_salinity.png
-2025-06-07 11:18:14,364 - INFO - Saved trend plot for temperatur as preclean_trend_temperatur.png
-2025-06-07 11:18:40,202 - INFO - Saved trend plot for transmissi as preclean_trend_transmissi.png
-2025-06-07 14:13:38,040 - INFO - Saved null heatmap to null_heatmap_month.png
-2025-06-07 14:18:33,771 - INFO - Saved null heatmap to null_heatmap_month.png
-2025-06-07 14:21:07,742 - INFO - Saved null heatmap to null_heatmap_month.png
-2025-06-07 14:21:55,260 - INFO - Saved null heatmap to null_heatmap_year.png
-2025-06-07 14:25:08,844 - INFO - Saved null heatmap to null_heatmap_day.png
-2025-06-07 21:31:59,086 - INFO - Saved null heatmap to null_heatmap_week.png
-2025-06-07 21:34:56,302 - INFO - Saved null percentage line plot as null_lineplot_day.png
-2025-06-08 00:39:42,361 - INFO - 
+2025-06-17 23:39:33,599 - INFO - 
+                Null Count  Percent
+ph                30689357    99.99
+nitrate           30678876    99.96
+transmissivity    30437333    99.17
+chlorophyll       28478293    92.79
+oxygen            23592785    76.87
+salinity           2001861     6.52
+temperature        1172793     3.82
+depth              1154879     3.76
+2025-06-17 23:39:34,571 - INFO - 
 Summary for table: features_clean
-2025-06-08 00:39:42,853 - INFO - <class 'pandas.core.frame.DataFrame'>
+2025-06-17 23:39:35,072 - INFO - 
+<class 'pandas.core.frame.DataFrame'>
 RangeIndex: 2213716 entries, 0 to 2213715
 Data columns (total 12 columns):
  #   Column          Dtype         
@@ -112,7 +102,8 @@ Data columns (total 12 columns):
 dtypes: datetime64[us](1), float64(8), int32(1), object(2)
 memory usage: 194.2+ MB
 
-2025-06-08 00:39:43,398 - INFO -          chlorophyll         depth       nitrate        oxygen           ph      salinity   temperature  transmissivity          cast                   timestamp latitude longitude
+2025-06-17 23:39:35,604 - INFO - 
+         chlorophyll         depth       nitrate        oxygen           ph      salinity   temperature  transmissivity          cast                   timestamp latitude longitude
 count   2.213716e+06  2.213716e+06  13133.000000  1.648623e+06  1491.000000  2.203080e+06  2.209465e+06             0.0  2.213716e+06                     2213716  2213716   2213716
 unique           NaN           NaN           NaN           NaN          NaN           NaN           NaN             NaN           NaN                         NaN    51947     57446
 top              NaN           NaN           NaN           NaN          NaN           NaN           NaN             NaN           NaN                         NaN  47.0000  -52.5867
@@ -124,9 +115,9 @@ min    -2.760000e-01  0.000000e+00     -0.000000  0.000000e+00     7.684692  0.0
 75%     5.870000e-01  2.750000e+02     28.667000  2.820000e+02     8.250000  3.486270e+01  1.184000e+01             NaN  1.773480e+07         2012-08-03 09:33:00      NaN       NaN
 max     4.999400e+01  6.000000e+03     46.692000  4.786490e+02     8.480000  4.061300e+01  3.327300e+01             NaN  2.282467e+07         2024-03-28 05:31:12      NaN       NaN
 std     3.287267e+00  7.648320e+02     15.891624  8.731364e+01     0.121001  2.178683e+00  7.874825e+00             NaN  4.318360e+06                         NaN      NaN       NaN
-2025-06-08 00:39:43,907 - INFO - 
+2025-06-17 23:39:36,220 - INFO - 
 Null summary for table features_clean:
-2025-06-08 00:39:43,907 - INFO - 
+2025-06-17 23:39:36,221 - INFO - 
                 Null Count  Percent
 transmissivity     2213716   100.00
 ph                 2212225    99.93
@@ -134,34 +125,45 @@ nitrate            2200583    99.41
 oxygen              565093    25.53
 salinity             10636     0.48
 temperature           4251     0.19
-2025-06-08 00:49:26,974 - INFO - Dropped column 'transmissivity' from features_clean
-2025-06-08 00:49:26,979 - INFO - Dropped column 'ph' from features_clean
-2025-06-08 00:49:26,984 - INFO - Dropped column 'nitrate' from features_clean
-
-2025-06-16 22:09:54,947 - INFO - Dropped rows with invalid lat/lon from table features_clean
-2025-06-17 02:22:59,125 - INFO - Saved distribution plot for chlorophyll to distribution_features_clean_chlorophyll.png
-2025-06-17 02:23:04,041 - INFO - Outliers in chlorophyll: 267920 out of 2213706 (12.10%)
-2025-06-17 02:23:05,660 - INFO - Saved box plot for chlorophyll to boxplot_features_clean_chlorophyll.png
-2025-06-17 02:23:05,802 - INFO - Saved bar plot for chlorophyll to barplot_features_clean_chlorophyll.png
-2025-06-17 02:23:10,181 - INFO - Saved distribution plot for depth to distribution_features_clean_depth.png
-2025-06-17 02:23:14,629 - INFO - Outliers in depth: 337644 out of 2213706 (15.25%)
-2025-06-17 02:23:16,482 - INFO - Saved box plot for depth to boxplot_features_clean_depth.png
-2025-06-17 02:23:16,624 - INFO - Saved bar plot for depth to barplot_features_clean_depth.png
-2025-06-17 02:23:19,966 - INFO - Saved distribution plot for oxygen to distribution_features_clean_oxygen.png
-2025-06-17 02:23:23,423 - INFO - Outliers in oxygen: 34267 out of 1648613 (2.08%)
-2025-06-17 02:23:24,392 - INFO - Saved box plot for oxygen to boxplot_features_clean_oxygen.png
-2025-06-17 02:23:24,538 - INFO - Saved bar plot for oxygen to barplot_features_clean_oxygen.png
-2025-06-17 02:23:29,757 - INFO - Saved distribution plot for salinity to distribution_features_clean_salinity.png
-2025-06-17 02:23:34,105 - INFO - Outliers in salinity: 61757 out of 2203070 (2.80%)
-2025-06-17 02:23:35,397 - INFO - Saved box plot for salinity to boxplot_features_clean_salinity.png
-2025-06-17 02:23:35,538 - INFO - Saved bar plot for salinity to barplot_features_clean_salinity.png
-2025-06-17 02:23:40,423 - INFO - Saved distribution plot for temperature to distribution_features_clean_temperature.png
-2025-06-17 02:23:45,519 - INFO - Outliers in temperature: 70525 out of 2209455 (3.19%)
-2025-06-17 02:23:46,818 - INFO - Saved box plot for temperature to boxplot_features_clean_temperature.png
-2025-06-17 02:23:46,957 - INFO - Saved bar plot for temperature to barplot_features_clean_temperature.png
-2025-06-17 02:23:46,958 - INFO - 
+2025-06-17 23:39:36,763 - INFO - Saved null heatmap to /home/bhan/projects/wod/scripts/../stats/null_heatmap/features_clean_month.png
+2025-06-17 23:39:36,770 - INFO - Dropped column 'transmissivity' from features_clean
+2025-06-17 23:39:36,774 - INFO - Dropped column 'ph' from features_clean
+2025-06-17 23:39:36,780 - INFO - Dropped column 'nitrate' from features_clean
+2025-06-17 23:39:36,967 - INFO - Dropped rows with invalid lat/lon from table features_clean
+2025-06-17 23:39:41,318 - INFO - Saved distribution plot for chlorophyll to /home/bhan/projects/wod/scripts/../stats/distributions/distribution_features_clean_chlorophyll.png
+2025-06-17 23:39:45,748 - INFO - Saved log scaleddistribution plot for chlorophyll to /home/bhan/projects/wod/scripts/../stats/distributions/log_scaled_distribution_features_clean_chlorophyll.png
+2025-06-17 23:39:45,774 - INFO - Outliers in chlorophyll: 267920 out of 2213706 (12.10%)
+2025-06-17 23:39:47,545 - INFO - Saved box plot for chlorophyll to /home/bhan/projects/wod/scripts/../stats/distributions/boxplot_features_clean_chlorophyll.png
+2025-06-17 23:39:47,689 - INFO - Saved bar plot for chlorophyll to /home/bhan/projects/wod/scripts/../stats/distributions/barplot_features_clean_chlorophyll.png
+2025-06-17 23:39:50,742 - INFO - Saved violin plot for chlorophyll to /home/bhan/projects/wod/scripts/../stats/distributions/violinplot_features_clean_chlorophyll.png
+2025-06-17 23:39:55,043 - INFO - Saved distribution plot for depth to /home/bhan/projects/wod/scripts/../stats/distributions/distribution_features_clean_depth.png
+2025-06-17 23:39:59,375 - INFO - Saved log scaleddistribution plot for depth to /home/bhan/projects/wod/scripts/../stats/distributions/log_scaled_distribution_features_clean_depth.png
+2025-06-17 23:39:59,401 - INFO - Outliers in depth: 337644 out of 2213706 (15.25%)
+2025-06-17 23:40:01,191 - INFO - Saved box plot for depth to /home/bhan/projects/wod/scripts/../stats/distributions/boxplot_features_clean_depth.png
+2025-06-17 23:40:01,337 - INFO - Saved bar plot for depth to /home/bhan/projects/wod/scripts/../stats/distributions/barplot_features_clean_depth.png
+2025-06-17 23:40:05,687 - INFO - Saved violin plot for depth to /home/bhan/projects/wod/scripts/../stats/distributions/violinplot_features_clean_depth.png
+2025-06-17 23:40:09,116 - INFO - Saved distribution plot for oxygen to /home/bhan/projects/wod/scripts/../stats/distributions/distribution_features_clean_oxygen.png
+2025-06-17 23:40:12,505 - INFO - Saved log scaleddistribution plot for oxygen to /home/bhan/projects/wod/scripts/../stats/distributions/log_scaled_distribution_features_clean_oxygen.png
+2025-06-17 23:40:12,526 - INFO - Outliers in oxygen: 34267 out of 1648613 (2.08%)
+2025-06-17 23:40:13,468 - INFO - Saved box plot for oxygen to /home/bhan/projects/wod/scripts/../stats/distributions/boxplot_features_clean_oxygen.png
+2025-06-17 23:40:13,606 - INFO - Saved bar plot for oxygen to /home/bhan/projects/wod/scripts/../stats/distributions/barplot_features_clean_oxygen.png
+2025-06-17 23:40:15,880 - INFO - Saved violin plot for oxygen to /home/bhan/projects/wod/scripts/../stats/distributions/violinplot_features_clean_oxygen.png
+2025-06-17 23:40:20,118 - INFO - Saved distribution plot for salinity to /home/bhan/projects/wod/scripts/../stats/distributions/distribution_features_clean_salinity.png
+2025-06-17 23:40:24,494 - INFO - Saved log scaleddistribution plot for salinity to /home/bhan/projects/wod/scripts/../stats/distributions/log_scaled_distribution_features_clean_salinity.png
+2025-06-17 23:40:24,518 - INFO - Outliers in salinity: 61757 out of 2203070 (2.80%)
+2025-06-17 23:40:25,842 - INFO - Saved box plot for salinity to /home/bhan/projects/wod/scripts/../stats/distributions/boxplot_features_clean_salinity.png
+2025-06-17 23:40:25,990 - INFO - Saved bar plot for salinity to /home/bhan/projects/wod/scripts/../stats/distributions/barplot_features_clean_salinity.png
+2025-06-17 23:40:29,156 - INFO - Saved violin plot for salinity to /home/bhan/projects/wod/scripts/../stats/distributions/violinplot_features_clean_salinity.png
+2025-06-17 23:40:33,521 - INFO - Saved distribution plot for temperature to /home/bhan/projects/wod/scripts/../stats/distributions/distribution_features_clean_temperature.png
+2025-06-17 23:40:39,264 - INFO - Saved log scaleddistribution plot for temperature to /home/bhan/projects/wod/scripts/../stats/distributions/log_scaled_distribution_features_clean_temperature.png
+2025-06-17 23:40:39,287 - INFO - Outliers in temperature: 70525 out of 2209455 (3.19%)
+2025-06-17 23:40:40,552 - INFO - Saved box plot for temperature to /home/bhan/projects/wod/scripts/../stats/distributions/boxplot_features_clean_temperature.png
+2025-06-17 23:40:40,697 - INFO - Saved bar plot for temperature to /home/bhan/projects/wod/scripts/../stats/distributions/barplot_features_clean_temperature.png
+2025-06-17 23:40:43,938 - INFO - Saved violin plot for temperature to /home/bhan/projects/wod/scripts/../stats/distributions/violinplot_features_clean_temperature.png
+2025-06-17 23:40:43,938 - INFO - 
 Summary for table: features_clean
-2025-06-17 02:23:47,319 - INFO - <class 'pandas.core.frame.DataFrame'>
+2025-06-17 23:40:44,277 - INFO - 
+<class 'pandas.core.frame.DataFrame'>
 RangeIndex: 2213706 entries, 0 to 2213705
 Data columns (total 9 columns):
  #   Column       Dtype         
@@ -178,39 +180,34 @@ Data columns (total 9 columns):
 dtypes: datetime64[us](1), float64(5), int32(1), object(2)
 memory usage: 143.6+ MB
 
-2025-06-17 02:23:47,753 - INFO -          chlorophyll         depth        oxygen      salinity   temperature          cast                   timestamp latitude longitude
+2025-06-17 23:40:44,730 - INFO - 
+         chlorophyll         depth        oxygen      salinity   temperature          cast                   timestamp latitude longitude
 count   2.213706e+06  2.213706e+06  1.648613e+06  2.203070e+06  2.209455e+06  2.213706e+06                     2213706  2213706   2213706
 unique           NaN           NaN           NaN           NaN           NaN           NaN                         NaN    51947     57445
 top              NaN           NaN           NaN           NaN           NaN           NaN                         NaN  47.0000  -52.5867
 freq             NaN           NaN           NaN           NaN           NaN           NaN                         NaN    29210      8307
-mean    9.665277e-01  3.660715e+02  2.185370e+02  3.352544e+01  8.307959e+00  1.412566e+07  2007-01-02 22:36:01.496801      NaN       NaN
+mean    9.665277e-01  3.660715e+02  2.185370e+02  3.352544e+01  8.307959e+00  1.412566e+07  2007-01-02 22:36:01.496802      NaN       NaN
 min    -2.760000e-01  0.000000e+00  0.000000e+00  0.000000e+00 -2.054800e+00  8.440350e+05         1979-05-23 16:21:00      NaN       NaN
 25%     4.250000e-02  3.000000e+01  1.761000e+02  3.237500e+01  2.051500e+00  1.074370e+07         2001-07-23 14:58:48      NaN       NaN
 50%     1.612550e-01  7.500000e+01  2.217000e+02  3.406300e+01  6.890000e+00  1.319069e+07         2007-03-23 17:46:12      NaN       NaN
 75%     5.870000e-01  2.750000e+02  2.820000e+02  3.486270e+01  1.184000e+01  1.773480e+07         2012-08-03 09:33:00      NaN       NaN
 max     4.999400e+01  6.000000e+03  4.786490e+02  4.061300e+01  3.327300e+01  2.282467e+07         2024-03-28 05:31:12      NaN       NaN
 std     3.287273e+00  7.648334e+02  8.731386e+01  2.178679e+00  7.874741e+00  4.318369e+06                         NaN      NaN       NaN
-2025-06-17 02:39:19,150 - INFO - Saved GeoPandas hexbin lat-lon plot for features_clean to lat_lon_distribution_features_clean.png
-2025-06-17 02:58:35,441 - INFO - Winsorized chlorophyll to 1-99 percentile range: [0.0000, 19.4010] — Modified 22278 values
-2025-06-17 02:58:35,579 - INFO - Winsorized depth to 1-99 percentile range: [0.0000, 4000.0000] — Modified 21496 values
-2025-06-17 02:58:35,705 - INFO - Winsorized oxygen to 1-99 percentile range: [11.3000, 385.2000] — Modified 32784 values
-2025-06-17 02:58:35,843 - INFO - Winsorized salinity to 1-99 percentile range: [27.5328, 38.0473] — Modified 44062 values
-2025-06-17 02:58:35,986 - INFO - Winsorized temperature to 1-99 percentile range: [-1.6693, 28.9622] — Modified 44188 values
-2025-06-17 02:58:35,986 - INFO - Winsorization completed for table: features_clean
-2025-06-17 03:00:58,612 - INFO - 
+2025-06-17 23:40:45,142 - INFO - 
 Null summary for table features_clean:
-2025-06-17 03:00:58,614 - INFO - 
+2025-06-17 23:40:45,142 - INFO - 
              Null Count  Percent
 oxygen           565093    25.53
 salinity          10636     0.48
 temperature        4251     0.19
-2025-06-17 03:00:59,116 - INFO - Saved null heatmap to null_heatmap_cleaned_features_clean_month.png
-2025-06-17 03:01:02,036 - INFO - Finished hierarchical imputation for oxygen: {'day + lat/lon': 4076, 'month + lat/lon': 10777, 'lat/lon': 280295, 'month': 267277, 'global': 2668} (Filled 565093 out of 565093)
-2025-06-17 03:01:02,131 - INFO - Finished hierarchical imputation for salinity: {'day + lat/lon': 737, 'month + lat/lon': 51, 'lat/lon': 5519, 'month': 4329, 'global': 0} (Filled 10636 out of 10636)
-2025-06-17 03:01:02,203 - INFO - Finished hierarchical imputation for temperature: {'day + lat/lon': 345, 'month + lat/lon': 18, 'lat/lon': 1037, 'month': 2851, 'global': 0} (Filled 4251 out of 4251)
-2025-06-17 03:01:02,384 - INFO - 
+2025-06-17 23:40:45,661 - INFO - Saved null heatmap to /home/bhan/projects/wod/scripts/../stats/null_heatmap/features_clean_month.png
+2025-06-17 23:40:48,470 - INFO - Finished hierarchical imputation for oxygen: {'day + lat/lon': 4076, 'month + lat/lon': 10777, 'lat/lon': 280295, 'month': 267277, 'global': 2668} (Filled 565093 out of 565093)
+2025-06-17 23:40:48,566 - INFO - Finished hierarchical imputation for salinity: {'day + lat/lon': 737, 'month + lat/lon': 51, 'lat/lon': 5519, 'month': 4329, 'global': 0} (Filled 10636 out of 10636)
+2025-06-17 23:40:48,633 - INFO - Finished hierarchical imputation for temperature: {'day + lat/lon': 345, 'month + lat/lon': 18, 'lat/lon': 1037, 'month': 2851, 'global': 0} (Filled 4251 out of 4251)
+2025-06-17 23:40:48,808 - INFO - 
 Summary for table: features_imputed
-2025-06-17 03:01:02,807 - INFO - <class 'pandas.core.frame.DataFrame'>
+2025-06-17 23:40:49,210 - INFO - 
+<class 'pandas.core.frame.DataFrame'>
 RangeIndex: 2213706 entries, 0 to 2213705
 Data columns (total 9 columns):
  #   Column       Dtype         
@@ -227,26 +224,28 @@ Data columns (total 9 columns):
 dtypes: datetime64[us](1), float64(5), int32(1), object(2)
 memory usage: 143.6+ MB
 
-2025-06-17 03:01:03,229 - INFO -          chlorophyll         depth        oxygen      salinity   temperature          cast                   timestamp latitude longitude
+2025-06-17 23:40:49,626 - INFO - 
+         chlorophyll         depth        oxygen      salinity   temperature          cast                   timestamp latitude longitude
 count   2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06                     2213706  2213706   2213706
 unique           NaN           NaN           NaN           NaN           NaN           NaN                         NaN    51947     57445
 top              NaN           NaN           NaN           NaN           NaN           NaN                         NaN  47.0000  -52.5867
 freq             NaN           NaN           NaN           NaN           NaN           NaN                         NaN    29210      8307
-mean    8.838461e-01  3.600217e+02  2.216351e+02  3.355814e+01  8.303510e+00  1.412566e+07  2007-01-02 22:36:01.496801      NaN       NaN
-min     0.000000e+00  0.000000e+00  1.130000e+01  2.753275e+01 -1.669300e+00  8.440350e+05         1979-05-23 16:21:00      NaN       NaN
-25%     4.250000e-02  3.000000e+01  1.830000e+02  3.237600e+01  2.058800e+00  1.074370e+07         2001-07-23 14:58:48      NaN       NaN
-50%     1.612550e-01  7.500000e+01  2.261113e+02  3.405680e+01  6.891000e+00  1.319069e+07         2007-03-23 17:46:12      NaN       NaN
-75%     5.870000e-01  2.750000e+02  2.764510e+02  3.485900e+01  1.183500e+01  1.773480e+07         2012-08-03 09:33:00      NaN       NaN
-max     1.940100e+01  4.000000e+03  3.852000e+02  3.804726e+01  2.896219e+01  2.282467e+07         2024-03-28 05:31:12      NaN       NaN
-std     2.567185e+00  7.317426e+02  7.958284e+01  1.896481e+00  7.850588e+00  4.318369e+06                         NaN      NaN       NaN
-2025-06-17 03:01:03,666 - INFO - 
+mean    9.665277e-01  3.660715e+02  2.217655e+02  3.352404e+01  8.309771e+00  1.412566e+07  2007-01-02 22:36:01.496802      NaN       NaN
+min    -2.760000e-01  0.000000e+00  0.000000e+00  0.000000e+00 -2.054800e+00  8.440350e+05         1979-05-23 16:21:00      NaN       NaN
+25%     4.250000e-02  3.000000e+01  1.830000e+02  3.237500e+01  2.058800e+00  1.074370e+07         2001-07-23 14:58:48      NaN       NaN
+50%     1.612550e-01  7.500000e+01  2.260409e+02  3.405680e+01  6.891000e+00  1.319069e+07         2007-03-23 17:46:12      NaN       NaN
+75%     5.870000e-01  2.750000e+02  2.764870e+02  3.485900e+01  1.183500e+01  1.773480e+07         2012-08-03 09:33:00      NaN       NaN
+max     4.999400e+01  6.000000e+03  4.786490e+02  4.061300e+01  3.327300e+01  2.282467e+07         2024-03-28 05:31:12      NaN       NaN
+std     3.287273e+00  7.648334e+02  8.004710e+01  2.175065e+00  7.870442e+00  4.318369e+06                         NaN      NaN       NaN
+2025-06-17 23:40:50,007 - INFO - 
 Null summary for table features_imputed:
-2025-06-17 03:01:03,666 - INFO - 
+2025-06-17 23:40:50,007 - INFO - 
 Empty DataFrame
 Columns: [Null Count, Percent]
 Index: []
-2025-06-17 03:01:04,114 - INFO - Saved null heatmap to null_heatmap_imputed_features_imputed_month.png
-2025-06-17 03:01:04,144 - INFO - Timestamp distribution for features_imputed (granularity=month):
+2025-06-17 23:40:50,459 - INFO - Saved null heatmap to /home/bhan/projects/wod/scripts/../statsnull_heatmap/features_imputed_month.png
+2025-06-17 23:40:50,486 - INFO - Timestamp distribution for features_imputed (granularity=month):
          start_date            end_date  total_records  active_days  active_months  active_years
 1979-05-23 16:21:00 2024-03-28 05:31:12        2213706         8942            427            46
-2025-06-17 03:01:04,450 - INFO - Saved timestamp distribution plot to timestamp_distribution_features_imputed_month.png
+2025-06-17 23:40:50,793 - INFO - Saved timestamp distribution plot to /home/bhan/projects/wod/scripts/../stats/distributions/timestamp_distribution_features_imputed_month.png
+2025-06-17 23:41:18,171 - INFO - Saved lat-lon world map plot to /home/bhan/projects/wod/scripts/../stats/distributions/lat_lon_distribution_features_imputed.png

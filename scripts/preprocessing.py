@@ -9,6 +9,7 @@ from datetime import datetime
 import geopandas as gpd
 from shapely.geometry import Point
 import numpy as np
+import os
 
 data_dir = __file__.replace("preprocessing.py", "../data")
 log_dir = __file__.replace("preprocessing.py", "../logs")
@@ -27,9 +28,9 @@ def summarize_table(table_name):
     df = db.execute(f"SELECT * FROM {table_name}").df()
     buffer = io.StringIO()
     df.info(buf=buffer)
-    logging.info(buffer.getvalue())
+    logging.info("\n" + buffer.getvalue())
     desc = df.describe(include='all')
-    logging.info(desc.to_string())
+    logging.info("\n" +desc.to_string())
     print(buffer.getvalue())
     print(desc)
     return df
@@ -84,7 +85,8 @@ def plot_variable_trends():
         plt.close()
         logging.info(f"Saved trend plot for {var} as preclean_trend_{var}.png")
 
-def plot_null_heatmap_over_time(table='features',granularity='month', save_file='null_heatmap'):
+def plot_null_heatmap_over_time(table='features',granularity='month', save_path='null_heatmap'):
+    os.makedirs(save_path, exist_ok=True)
     granularity_format = {
         'month': ('%b %Y', 'month'),
         'year': ('%Y', 'year'),
@@ -126,9 +128,9 @@ def plot_null_heatmap_over_time(table='features',granularity='month', save_file=
 
     plt.figure(figsize=(14, max(6, len(heatmap_df) * 0.5)))
     ax = sns.heatmap(heatmap_df, cmap='magma_r', cbar_kws={'label': '% Null'}, linewidths=0.4)
-    ax.set_title(f'Null Values Over Time ({table} - {granularity.capitalize()})', fontsize=14)
+    ax.set_title(f'Null Values Over Time ({granularity.capitalize()})', fontsize=14)
     ax.set_xlabel("Time")
-    ax.set_ylabel("Variable")
+    ax.set_ylabel("Feature")
 
     xticklabels = heatmap_df.columns
     if len(xticklabels) > 20:
@@ -138,10 +140,28 @@ def plot_null_heatmap_over_time(table='features',granularity='month', save_file=
         ax.set_xticklabels(selected_labels, rotation=45)
 
     plt.tight_layout()
-    plt.savefig(stat_dir + f"/{save_file}_{table}_{granularity}.png", dpi=300)
+    plt.savefig(save_path + f"/{table}_{granularity}.png", dpi=300)
     plt.close()
-    logging.info(f"Saved null heatmap to {save_file}_{table}_{granularity}.png")
+    logging.info(f"Saved null heatmap to {save_path}/{table}_{granularity}.png")
 
+def create_clean_dataset():
+    db.execute("DROP TABLE IF EXISTS features_clean;")
+    # Create joined table with required columns and filtered rows
+    db.execute("""
+    CREATE TABLE IF NOT EXISTS features_clean AS
+    SELECT f.*, c.timestamp, c.latitude, c.longitude
+    FROM features f
+    JOIN casts c ON f.cast = c.cast
+    WHERE f.chlorophyll IS NOT NULL;
+    """)
+
+def drop_null_cols(table='features_clean', cols=['transmissivity', 'ph', 'nitrate']):
+    for col in cols:
+        try:
+            db.execute(f"ALTER TABLE {table} DROP COLUMN IF EXISTS \"{col}\";")
+            logging.info(f"Dropped column '{col}' from {table}")
+        except Exception as e:
+            logging.warning(f"Failed to drop column '{col}' from {table}: {e}")
 def plot_null_percent_lineplot(granularity='month'):
     granularity_sql = {
         'day': 'day',
@@ -193,7 +213,7 @@ def plot_null_percent_lineplot(granularity='month'):
     plt.savefig(stat_dir + f"/null_lineplot_{granularity}.png", dpi=300)
     plt.close()
     logging.info(f"Saved null percentage line plot as null_lineplot_{granularity}.png")
-
+    
 def drop_invalid_lat_lon(table='features_clean'):
     try:
         db.execute(f'''
@@ -207,8 +227,9 @@ def drop_invalid_lat_lon(table='features_clean'):
     except Exception as e:
         logging.error(f"Failed to drop invalid lat/lon from {table}: {e}")
 
-def plot_feature_distributions(table='features_clean'):
+def plot_feature_distributions(table='features_clean', save_dir='distributions', stats=['histogram', 'log_histogram', 'boxplot', 'bar_plot', 'violin_plot','outlier_prevalence',]):
     try:
+        os.makedirs(save_dir, exist_ok=True)
         columns = db.execute(f"PRAGMA table_info({table})").df()
         feature_cols = [col for col in columns['name'] if col not in ('cast', 'timestamp', 'latitude', 'longitude')]
 
@@ -221,73 +242,92 @@ def plot_feature_distributions(table='features_clean'):
 
             if df.empty:
                 continue
-
+            
             # histogram
-            plt.figure(figsize=(10, 4))
-            sns.histplot(df['value'], kde=True, bins=100, color='skyblue')
-            plt.title(f"Distribution of {col.capitalize()}")
-            plt.xlabel(col.capitalize())
-            plt.ylabel("Frequency")
-            plt.grid(True, axis='y', alpha=0.3)
-            plt.tight_layout()
-            plt.savefig(stat_dir +  f"/distribution_{table}_{col}.png", dpi=300)
-            plt.close()
-            logging.info(f"Saved distribution plot for {col} to distribution_{table}_{col}.png")
+            if 'histogram' in stats:
+                plt.figure(figsize=(10, 4))
+                sns.histplot(df['value'], kde=True, bins=100, color='skyblue')
+                plt.title(f"Distribution of {col.capitalize()}")
+                plt.xlabel(col.capitalize())
+                plt.ylabel("Frequency")
+                plt.grid(True, axis='y', alpha=0.3)
+                plt.tight_layout()
+                plt.savefig(save_dir +  f"/distribution_{table}_{col}.png", dpi=300)
+                plt.close()
+                logging.info(f"Saved distribution plot for {col} to {save_dir}/distribution_{table}_{col}.png")
 
             # log scaled histogram
-            plt.figure(figsize=(10, 4))
-            sns.histplot(df['value'], kde=True, bins=100, color='skyblue')
-            plt.title(f"Distribution of {col.capitalize()}")
-            plt.xlabel(col.capitalize())
-            plt.ylabel("Frequency")
-            plt.yscale('log')
-            plt.grid(True, axis='y', alpha=0.3)
-            plt.tight_layout()
-            plt.savefig(stat_dir +  f"/_log_scaled_distribution_{table}_{col}.png", dpi=300)
-            plt.close()
+            if 'log_histogram' in stats:
+                plt.figure(figsize=(10, 4))
+                sns.histplot(df['value'], kde=True, bins=100, color='skyblue')
+                plt.title(f"Distribution of {col.capitalize()}")
+                plt.xlabel(col.capitalize())
+                plt.ylabel("Frequency")
+                plt.yscale('log')
+                plt.grid(True, axis='y', alpha=0.3)
+                plt.tight_layout()
+                plt.savefig(save_dir +  f"/log_scaled_distribution_{table}_{col}.png", dpi=300)
+                plt.close()
+                logging.info(f"Saved log scaleddistribution plot for {col} to {save_dir}/log_scaled_distribution_{table}_{col}.png")
 
             # Quantify outlier prevalence
-            q1 = df['value'].quantile(0.25)
-            q3 = df['value'].quantile(0.75)
-            iqr = q3 - q1
-            lower_bound = q1 - 1.5 * iqr
-            upper_bound = q3 + 1.5 * iqr
-            outliers = df[(df['value'] < lower_bound) | (df['value'] > upper_bound)]
-            outlier_count = len(outliers)
-            total_count = len(df)
-            outlier_pct = (outlier_count / total_count) * 100
-            logging.info(f"Outliers in {col}: {outlier_count} out of {total_count} ({outlier_pct:.2f}%)")
+            if 'outlier_prevalence' in stats:
+                q1 = df['value'].quantile(0.25)
+                q3 = df['value'].quantile(0.75)
+                iqr = q3 - q1
+                lower_bound = q1 - 1.5 * iqr
+                upper_bound = q3 + 1.5 * iqr
+                outliers = df[(df['value'] < lower_bound) | (df['value'] > upper_bound)]
+                outlier_count = len(outliers)
+                total_count = len(df)
+                outlier_pct = (outlier_count / total_count) * 100
+                logging.info(f"Outliers in {col}: {outlier_count} out of {total_count} ({outlier_pct:.2f}%)")
 
             # Box plot
-            plt.figure(figsize=(6, 6))
-            sns.boxplot(y=df['value'], color='lightcoral')
-            plt.title(f"Distribution Box Plot of {col.capitalize()}")
-            plt.ylabel(col.capitalize())
-            plt.grid(True, axis='y', alpha=0.3)
-            plt.tight_layout()
-            plt.savefig(stat_dir + f"/boxplot_{table}_{col}.png", dpi=300)
-            plt.close()
-            logging.info(f"Saved box plot for {col} to boxplot_{table}_{col}.png")
+            if 'boxplot' in stats:
+                plt.figure(figsize=(6, 6))
+                sns.boxplot(y=df['value'], color='lightcoral')
+                plt.title(f"Distribution Box Plot of {col.capitalize()}")
+                plt.ylabel(col.capitalize())
+                plt.grid(True, axis='y', alpha=0.3)
+                plt.tight_layout()
+                plt.savefig(save_dir + f"/boxplot_{table}_{col}.png", dpi=300)
+                plt.close()
+                logging.info(f"Saved box plot for {col} to {save_dir}/boxplot_{table}_{col}.png")
 
             # Bar plot
-            plt.figure(figsize=(12, 4))
-            bin_counts, bin_edges = np.histogram(df['value'], bins=50)
-            bin_centers = 0.5 * (bin_edges[1:] + bin_edges[:-1])
-            plt.bar(bin_centers, bin_counts, width=np.diff(bin_edges), align='center', color='mediumseagreen', alpha=0.8)
-            plt.title(f"Distribution Bar Plot of {col.capitalize()}")
-            plt.xlabel(col.capitalize())
-            plt.ylabel("Count")
-            plt.grid(True, axis='y', alpha=0.3)
-            plt.tight_layout()
-            plt.savefig(stat_dir +  f"/barplot_{table}_{col}.png", dpi=300)
-            plt.close()
-            logging.info(f"Saved bar plot for {col} to barplot_{table}_{col}.png")
+            if 'bar_plot' in stats:
+                plt.figure(figsize=(12, 4))
+                bin_counts, bin_edges = np.histogram(df['value'], bins=50)
+                bin_centers = 0.5 * (bin_edges[1:] + bin_edges[:-1])
+                plt.bar(bin_centers, bin_counts, width=np.diff(bin_edges), align='center', color='skyblue', alpha=0.8)
+                plt.title(f"Distribution Bar Plot of {col.capitalize()}")
+                plt.xlabel(col.capitalize())
+                plt.ylabel("Count")
+                plt.grid(True, axis='y', alpha=0.3)
+                plt.tight_layout()
+                plt.savefig(save_dir +  f"/barplot_{table}_{col}.png", dpi=300)
+                plt.close()
+                logging.info(f"Saved bar plot for {col} to {save_dir}/barplot_{table}_{col}.png")
+
+            # Violin plot
+            if 'violin_plot' in stats:
+                plt.figure(figsize=(6, 6))
+                sns.violinplot(y=df['value'], color='mediumseagreen')
+                plt.title(f"Distribution Violin Plot of {col.capitalize()}")
+                plt.ylabel(col.capitalize())
+                plt.grid(True, axis='y', alpha=0.3)
+                plt.tight_layout()
+                plt.savefig(save_dir + f"/violinplot_{table}_{col}.png", dpi=300)
+                plt.close()
+                logging.info(f"Saved violin plot for {col} to {save_dir}/violinplot_{table}_{col}.png")
 
     except Exception as e:
         logging.error(f"Error plotting feature distributions from {table}: {e}")
 
-def plot_lat_lon_map(table='features_imputed'):
+def plot_lat_lon_map(table='features_imputed', save_dir=stat_dir + '/distributions'):  
     try:
+        os.makedirs(save_dir, exist_ok=True)
         df = db.execute(f'''
             SELECT 
                 CAST(latitude AS DOUBLE) AS latitude,
@@ -308,9 +348,9 @@ def plot_lat_lon_map(table='features_imputed'):
         ax.set_xlabel("Longitude")
         ax.set_ylabel("Latitude")
         plt.tight_layout()
-        plt.savefig(stat_dir + f"/lat_lon_distribution_{table}.png", dpi=300)
+        plt.savefig(save_dir + f"/lat_lon_distribution_{table}.png", dpi=300)
         plt.close()
-        logging.info(f"Saved lat-lon world map plot to lat_lon_distribution_{table}.png")
+        logging.info(f"Saved lat-lon world map plot to {save_dir}/lat_lon_distribution_{table}.png")
 
     except Exception as e:
         logging.error(f"Failed to plot lat-lon map for {table}: {e}")
@@ -444,7 +484,7 @@ def spatial_temporal_imputation(table='features_clean', vars_to_impute=None, out
     except Exception as e:
         logging.error(f"Failed spatial-temporal imputation: {e}")
 
-def analyze_timestamp_distribution(table='features_imputed', granularity='month'):
+def analyze_timestamp_distribution(table='features_imputed', granularity='month', save_dir = stat_dir + '/distributions'):
     granularity_unit = {
         'day': 'day',
         'month': 'month',
@@ -478,14 +518,14 @@ def analyze_timestamp_distribution(table='features_imputed', granularity='month'
 
         plt.figure(figsize=(14, 5))
         plt.bar(time_counts['period'].dt.to_pydatetime(), time_counts['count'], width=20 if granularity_unit == 'year' else 10)
-        plt.title(f"{granularity.capitalize()} Record Count for {table}")
+        plt.title(f"{granularity.capitalize()}ly Record Count")
         plt.xlabel(granularity.capitalize())
         plt.ylabel("Number of Records")
         plt.grid(True, axis='y')
         plt.tight_layout()
-        plt.savefig(stat_dir + f"/timestamp_distribution_{table}_{granularity}.png", dpi=300)
+        plt.savefig(save_dir + f"/timestamp_distribution_{table}_{granularity}.png", dpi=300)
         plt.close()
-        logging.info(f"Saved timestamp distribution plot to timestamp_distribution_{table}_{granularity}.png")
+        logging.info(f"Saved timestamp distribution plot to {save_dir}/timestamp_distribution_{table}_{granularity}.png")
 
     except Exception as e:
         logging.error(f"Error analyzing timestamp distribution for {table}: {e}")
@@ -515,46 +555,25 @@ def analyze_depth_distribution(table='features_imputed'):
 
 
 # print(db.execute("SHOW TABLES;").df())
-# summarize_table("casts")
-# summarize_table("features")
-# null_summary("casts")
-# null_summary("features")
-# plot_variable_trends()
+summarize_table("casts")
+summarize_table("features")
+null_summary("casts")
+null_summary("features")
 # rename_feature_columns()
-# plot_null_heatmap_over_time('features','week')
-# plot_null_percent_lineplot('day')
+create_clean_dataset()
+summarize_table("features_clean")
+null_summary("features_clean")
+plot_null_heatmap_over_time('features_clean','month', stat_dir + '/null_heatmap')
+drop_null_cols(table='features_clean', cols=['transmissivity', 'ph', 'nitrate'])
+drop_invalid_lat_lon()
+plot_feature_distributions(table='features_clean', save_dir= stat_dir + '/distributions')
+summarize_table("features_clean")
+null_summary("features_clean")
+plot_null_heatmap_over_time('features_clean', 'month', stat_dir + '/null_heatmap')
 
-# Create joined table with required columns and filtered rows
-# db.execute("""
-# CREATE TABLE IF NOT EXISTS features_clean AS
-# SELECT f.*, c.timestamp, c.latitude, c.longitude
-# FROM features f
-# JOIN casts c ON f.cast = c.cast
-# WHERE f.chlorophyll IS NOT NULL;
-# """)
-
-# summarize_table("features_clean")
-# null_summary("features_clean")
-
-# Drop columns with excessive nulls from features_clean if they exist
-# for col in ['transmissivity', 'ph', 'nitrate']:
-#    try:
-#        db.execute(f"ALTER TABLE features_clean DROP COLUMN IF EXISTS \"{col}\";")
-#        logging.info(f"Dropped column '{col}' from features_clean")
-#    except Exception as e:
-#        logging.warning(f"Failed to drop column '{col}' from features_clean: {e}")
-
-# drop_invalid_lat_lon()
-# plot_feature_distributions()
-# summarize_table("features_clean")
-# plot_hexbin_lat_lon('features_clean')
-# winsorize_table()
-# null_summary("features_clean")
-# plot_null_heatmap_over_time('features_clean','month','null_heatmap_cleaned')
-
-# spatial_temporal_imputation()
-# summarize_table("features_imputed")
-# null_summary("features_imputed")
-# plot_null_heatmap_over_time('features_imputed','month','null_heatmap_imputed')
-
-# analyze_timestamp_distribution(table='features_imputed', granularity='month')
+spatial_temporal_imputation()
+summarize_table("features_imputed")
+null_summary("features_imputed")
+plot_null_heatmap_over_time('features_imputed','month',stat_dir + '/null_heatmap')
+analyze_timestamp_distribution(table='features_imputed', granularity='month', save_dir=stat_dir + '/distributions')
+plot_lat_lon_map(table='features_imputed', save_dir=stat_dir + '/distributions')
