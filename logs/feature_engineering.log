@@ -1,0 +1,342 @@
+2025-06-20 21:57:01,251 - INFO - Added identifier column to table features_imputed
+2025-06-20 21:57:01,251 - INFO - 
+Summary for table: features_imputed
+2025-06-20 21:57:01,749 - INFO - 
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 2213706 entries, 0 to 2213705
+Data columns (total 10 columns):
+ #   Column       Dtype         
+---  ------       -----         
+ 0   row_id       int64         
+ 1   chlorophyll  float64       
+ 2   depth        float64       
+ 3   oxygen       float64       
+ 4   salinity     float64       
+ 5   temperature  float64       
+ 6   cast         int32         
+ 7   timestamp    datetime64[us]
+ 8   latitude     object        
+ 9   longitude    object        
+dtypes: datetime64[us](1), float64(5), int32(1), int64(1), object(2)
+memory usage: 160.4+ MB
+
+2025-06-20 21:57:02,254 - INFO - 
+              row_id   chlorophyll         depth        oxygen      salinity   temperature          cast                   timestamp latitude longitude
+count   2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06                     2213706  2213706   2213706
+unique           NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN    51947     57445
+top              NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN  47.0000  -52.5867
+freq             NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN    29210      8307
+mean    1.106854e+06  9.665277e-01  3.660715e+02  2.217655e+02  3.352404e+01  8.309771e+00  1.412566e+07  2007-01-02 22:36:01.496802      NaN       NaN
+min     1.000000e+00 -2.760000e-01  0.000000e+00  0.000000e+00  0.000000e+00 -2.054800e+00  8.440350e+05         1979-05-23 16:21:00      NaN       NaN
+25%     5.534272e+05  4.250000e-02  3.000000e+01  1.830000e+02  3.237500e+01  2.058800e+00  1.074370e+07         2001-07-23 14:58:48      NaN       NaN
+50%     1.106854e+06  1.612550e-01  7.500000e+01  2.260409e+02  3.405680e+01  6.891000e+00  1.319069e+07         2007-03-23 17:46:12      NaN       NaN
+75%     1.660280e+06  5.870000e-01  2.750000e+02  2.764870e+02  3.485900e+01  1.183500e+01  1.773480e+07         2012-08-03 09:33:00      NaN       NaN
+max     2.213706e+06  4.999400e+01  6.000000e+03  4.786490e+02  4.061300e+01  3.327300e+01  2.282467e+07         2024-03-28 05:31:12      NaN       NaN
+std     6.390420e+05  3.287273e+00  7.648334e+02  8.004710e+01  2.175065e+00  7.870442e+00  4.318369e+06                         NaN      NaN       NaN
+
+2025-06-21 02:02:11,680 - INFO - Assigned 2440 untagged rows using nearest basin centroid.
+2025-06-21 02:02:12,275 - INFO - Saved ocean_basin sucecsfully to features_imputed
+2025-06-21 02:05:01,690 - INFO - Saved lat-lon world map plot to /home/bhan/projects/wod/scripts/../stats/distributions/lat_lon_distribution_w_basins_features_imputed.png
+2025-06-21 02:05:01,703 - INFO - Legend Table:
+                                                   Ocean Basin ColorHex  Count
+                                          North Pacific\nOcean  #db5f57 537106
+                                         North Atlantic\nOcean  #db6c57 388053
+                                         Gulf of St.\nLawrence  #db7957 233482
+The Coastal Waters\nof Southeast\nAlaska and British\nColumbia  #db8657 157226
+                                                  Labrador Sea  #db9357 120724
+                                                Gulf of Mexico  #dba057  91875
+                                                  Indian Ocean  #dbad57  89880
+                                                Southern Ocean  #dbba57  89012
+                                          South Pacific\nOcean  #dbc757  83275
+                                    The Northwestern\nPassages  #dbd457  45407
+                                         South Atlantic\nOcean  #d6db57  39631
+                                                  Davis Strait  #c8db57  33140
+                                                     North Sea  #bbdb57  30006
+                                                  Beaufort Sea  #aedb57  27820
+                                                  Bay of Fundy  #a1db57  27015
+                                                  Arctic Ocean  #94db57  23281
+                                                    Tasman Sea  #87db57  20441
+                                                   Arabian Sea  #7adb57  20361
+                                                 Norwegian Sea  #6ddb57  18428
+                                                Philippine Sea  #60db57  17645
+                                                    Aegean Sea  #57db5a  17587
+                                                     Coral Sea  #57db67  15475
+                                                 Greenland Sea  #57db74  13470
+                                                    Baffin Bay  #57db81  10546
+                                                    Bering Sea  #57db8e   8853
+                   Inner Seas off the\nWest Coast of\nScotland  #57db9c   6200
+                                                 Caribbean Sea  #57dba9   5144
+                                                 Bay of Biscay  #57dbb6   4100
+                                                  Bismarck Sea  #57dbc3   3814
+                                                   Chukchi Sea  #57dbd0   3406
+                                       Great Australian\nBight  #57dadb   3225
+                            Mediterranean Sea\n- Eastern Basin  #57cddb   3111
+                                               English Channel  #57c0db   2807
+                            Mediterranean Sea\n- Western Basin  #57b3db   2668
+                                                    Celtic Sea  #57a6db   2575
+                                                   Bass Strait  #5799db   2282
+                                                Gulf of Alaska  #578cdb   2033
+                                                    Hudson Bay  #577fdb   1963
+                                                       Red Sea  #5772db   1191
+                                                Tyrrhenian Sea  #5764db   1038
+                                                 Hudson Strait  #5757db    993
+                                       Balearic (Iberian\nSea)  #6357db    765
+                                                  Gulf of Aden  #7057db    758
+                                                   Solomon Sea  #7d57db    757
+                                                     Timor Sea  #8a57db    747
+                                                  Gulf of Riga  #9757db    646
+                                                  Gulf of Oman  #a457db    623
+                                                  Barentsz Sea  #b157db    589
+                                                    Ionian Sea  #be57db    490
+                                                     Black Sea  #cb57db    454
+                                                   Arafura Sea  #d857db    365
+                                                 Laccadive Sea  #db57d1    337
+                           Irish Sea and St.\nGeorge's Channel  #db57c4    238
+                                                    Baltic Sea  #db57b7    203
+                                                Gulf of Guinea  #db57aa    135
+                                                    Laptev Sea  #db579d    105
+                                                  Persian Gulf  #db5790     93
+                                                   Lincoln Sea  #db5783     47
+                                                     Skagerrak  #db5776     43
+                                                      Kara Sea  #db5769     16
+                                                      Kattegat  #db575c      6
+2025-06-21 02:05:02,158 - INFO - Saved separate legend table with color swatches to /home/bhan/projects/wod/scripts/../stats/distributions/ocean_basins_legend_table.png
+2025-06-21 02:05:02,826 - INFO - 
+Summary for table: features_imputed
+2025-06-21 02:05:03,268 - INFO - 
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 2213706 entries, 0 to 2213705
+Data columns (total 11 columns):
+ #   Column       Dtype         
+---  ------       -----         
+ 0   row_id       int64         
+ 1   chlorophyll  float64       
+ 2   depth        float64       
+ 3   oxygen       float64       
+ 4   salinity     float64       
+ 5   temperature  float64       
+ 6   cast         int32         
+ 7   timestamp    datetime64[us]
+ 8   latitude     object        
+ 9   longitude    object        
+ 10  ocean_basin  object        
+dtypes: datetime64[us](1), float64(5), int32(1), int64(1), object(3)
+memory usage: 177.3+ MB
+
+2025-06-21 02:05:03,898 - INFO - 
+              row_id   chlorophyll         depth        oxygen      salinity   temperature          cast                   timestamp latitude longitude          ocean_basin
+count   2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06                     2213706  2213706   2213706              2213706
+unique           NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN    51947     57445                   61
+top              NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN  47.0000  -52.5867  North Pacific Ocean
+freq             NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN    29210      8307               537106
+mean    1.106854e+06  9.665277e-01  3.660715e+02  2.217655e+02  3.352404e+01  8.309771e+00  1.412566e+07  2007-01-02 22:36:01.496802      NaN       NaN                  NaN
+min     1.000000e+00 -2.760000e-01  0.000000e+00  0.000000e+00  0.000000e+00 -2.054800e+00  8.440350e+05         1979-05-23 16:21:00      NaN       NaN                  NaN
+25%     5.534272e+05  4.250000e-02  3.000000e+01  1.830000e+02  3.237500e+01  2.058800e+00  1.074370e+07         2001-07-23 14:58:48      NaN       NaN                  NaN
+50%     1.106854e+06  1.612550e-01  7.500000e+01  2.260409e+02  3.405680e+01  6.891000e+00  1.319069e+07         2007-03-23 17:46:12      NaN       NaN                  NaN
+75%     1.660280e+06  5.870000e-01  2.750000e+02  2.764870e+02  3.485900e+01  1.183500e+01  1.773480e+07         2012-08-03 09:33:00      NaN       NaN                  NaN
+max     2.213706e+06  4.999400e+01  6.000000e+03  4.786490e+02  4.061300e+01  3.327300e+01  2.282467e+07         2024-03-28 05:31:12      NaN       NaN                  NaN
+std     6.390420e+05  3.287273e+00  7.648334e+02  8.004710e+01  2.175065e+00  7.870442e+00  4.318369e+06                         NaN      NaN       NaN                  NaN
+2025-06-21 13:02:23,933 - INFO - Assigned 2440 untagged rows using nearest basin centroid.
+2025-06-21 13:02:24,524 - INFO - Saved ocean_basin sucecsfully to features_imputed
+2025-06-21 13:05:17,389 - INFO - Saved lat-lon world map plot to /home/bhan/projects/wod/scripts/../stats/distributions/lat_lon_distribution_w_basins_features_imputed.png
+2025-06-21 13:05:17,393 - INFO - Legend Table:
+                                                  Ocean Basin ColorHex  Count
+                                          North Pacific Ocean  #db5f57 537106
+                                         North Atlantic Ocean  #db6c57 388053
+                                         Gulf of St. Lawrence  #db7957 233482
+The Coastal Waters of\nSoutheast Alaska and British\nColumbia  #db8657 157226
+                                                 Labrador Sea  #db9357 120724
+                                               Gulf of Mexico  #dba057  91875
+                                                 Indian Ocean  #dbad57  89880
+                                               Southern Ocean  #dbba57  89012
+                                          South Pacific Ocean  #dbc757  83275
+                                    The Northwestern Passages  #dbd457  45407
+                                         South Atlantic Ocean  #d6db57  39631
+                                                 Davis Strait  #c8db57  33140
+                                                    North Sea  #bbdb57  30006
+                                                 Beaufort Sea  #aedb57  27820
+                                                 Bay of Fundy  #a1db57  27015
+                                                 Arctic Ocean  #94db57  23281
+                                                   Tasman Sea  #87db57  20441
+                                                  Arabian Sea  #7adb57  20361
+                                                Norwegian Sea  #6ddb57  18428
+                                               Philippine Sea  #60db57  17645
+                                                   Aegean Sea  #57db5a  17587
+                                                    Coral Sea  #57db67  15475
+                                                Greenland Sea  #57db74  13470
+                                                   Baffin Bay  #57db81  10546
+                                                   Bering Sea  #57db8e   8853
+                   Inner Seas off the West Coast\nof Scotland  #57db9c   6200
+                                                Caribbean Sea  #57dba9   5144
+                                                Bay of Biscay  #57dbb6   4100
+                                                 Bismarck Sea  #57dbc3   3814
+                                                  Chukchi Sea  #57dbd0   3406
+                                       Great Australian Bight  #57dadb   3225
+                           Mediterranean Sea - Eastern\nBasin  #57cddb   3111
+                                              English Channel  #57c0db   2807
+                           Mediterranean Sea - Western\nBasin  #57b3db   2668
+                                                   Celtic Sea  #57a6db   2575
+                                                  Bass Strait  #5799db   2282
+                                               Gulf of Alaska  #578cdb   2033
+                                                   Hudson Bay  #577fdb   1963
+                                                      Red Sea  #5772db   1191
+                                               Tyrrhenian Sea  #5764db   1038
+                                                Hudson Strait  #5757db    993
+                                       Balearic (Iberian Sea)  #6357db    765
+                                                 Gulf of Aden  #7057db    758
+                                                  Solomon Sea  #7d57db    757
+                                                    Timor Sea  #8a57db    747
+                                                 Gulf of Riga  #9757db    646
+                                                 Gulf of Oman  #a457db    623
+                                                 Barentsz Sea  #b157db    589
+                                                   Ionian Sea  #be57db    490
+                                                    Black Sea  #cb57db    454
+                                                  Arafura Sea  #d857db    365
+                                                Laccadive Sea  #db57d1    337
+                          Irish Sea and St. George's\nChannel  #db57c4    238
+                                                   Baltic Sea  #db57b7    203
+                                               Gulf of Guinea  #db57aa    135
+                                                   Laptev Sea  #db579d    105
+                                                 Persian Gulf  #db5790     93
+                                                  Lincoln Sea  #db5783     47
+                                                    Skagerrak  #db5776     43
+                                                     Kara Sea  #db5769     16
+                                                     Kattegat  #db575c      6
+2025-06-21 13:05:17,870 - INFO - Saved separate legend table with color swatches to /home/bhan/projects/wod/scripts/../stats/distributions/ocean_basins_legend_table.png
+2025-06-21 13:05:18,597 - INFO - 
+Summary for table: features_imputed
+2025-06-21 13:05:19,010 - INFO - 
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 2213706 entries, 0 to 2213705
+Data columns (total 11 columns):
+ #   Column       Dtype         
+---  ------       -----         
+ 0   row_id       int64         
+ 1   chlorophyll  float64       
+ 2   depth        float64       
+ 3   oxygen       float64       
+ 4   salinity     float64       
+ 5   temperature  float64       
+ 6   cast         int32         
+ 7   timestamp    datetime64[us]
+ 8   latitude     object        
+ 9   longitude    object        
+ 10  ocean_basin  object        
+dtypes: datetime64[us](1), float64(5), int32(1), int64(1), object(3)
+memory usage: 177.3+ MB
+
+2025-06-21 13:05:19,615 - INFO - 
+              row_id   chlorophyll         depth        oxygen      salinity   temperature          cast                   timestamp latitude longitude          ocean_basin
+count   2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06                     2213706  2213706   2213706              2213706
+unique           NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN    51947     57445                   61
+top              NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN  47.0000  -52.5867  North Pacific Ocean
+freq             NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN    29210      8307               537106
+mean    1.106854e+06  9.665277e-01  3.660715e+02  2.217655e+02  3.352404e+01  8.309771e+00  1.412566e+07  2007-01-02 22:36:01.496802      NaN       NaN                  NaN
+min     1.000000e+00 -2.760000e-01  0.000000e+00  0.000000e+00  0.000000e+00 -2.054800e+00  8.440350e+05         1979-05-23 16:21:00      NaN       NaN                  NaN
+25%     5.534272e+05  4.250000e-02  3.000000e+01  1.830000e+02  3.237500e+01  2.058800e+00  1.074370e+07         2001-07-23 14:58:48      NaN       NaN                  NaN
+50%     1.106854e+06  1.612550e-01  7.500000e+01  2.260409e+02  3.405680e+01  6.891000e+00  1.319069e+07         2007-03-23 17:46:12      NaN       NaN                  NaN
+75%     1.660280e+06  5.870000e-01  2.750000e+02  2.764870e+02  3.485900e+01  1.183500e+01  1.773480e+07         2012-08-03 09:33:00      NaN       NaN                  NaN
+max     2.213706e+06  4.999400e+01  6.000000e+03  4.786490e+02  4.061300e+01  3.327300e+01  2.282467e+07         2024-03-28 05:31:12      NaN       NaN                  NaN
+std     6.390420e+05  3.287273e+00  7.648334e+02  8.004710e+01  2.175065e+00  7.870442e+00  4.318369e+06                         NaN      NaN       NaN                  NaN
+2025-06-21 13:08:28,008 - INFO - Assigned 2440 untagged rows using nearest basin centroid.
+2025-06-21 13:08:28,652 - INFO - Saved ocean_basin sucecsfully to features_imputed
+2025-06-21 13:11:39,548 - INFO - Saved lat-lon world map plot to /home/bhan/projects/wod/scripts/../stats/distributions/lat_lon_distribution_w_basins_features_imputed.png
+2025-06-21 13:11:39,550 - INFO - Legend Table:
+                                                 Ocean Basin ColorHex  Count
+                                         North Pacific Ocean  #db5f57 537106
+                                        North Atlantic Ocean  #db6c57 388053
+                                        Gulf of St. Lawrence  #db7957 233482
+The Coastal Waters of Southeast Alaska\nand British Columbia  #db8657 157226
+                                                Labrador Sea  #db9357 120724
+                                              Gulf of Mexico  #dba057  91875
+                                                Indian Ocean  #dbad57  89880
+                                              Southern Ocean  #dbba57  89012
+                                         South Pacific Ocean  #dbc757  83275
+                                   The Northwestern Passages  #dbd457  45407
+                                        South Atlantic Ocean  #d6db57  39631
+                                                Davis Strait  #c8db57  33140
+                                                   North Sea  #bbdb57  30006
+                                                Beaufort Sea  #aedb57  27820
+                                                Bay of Fundy  #a1db57  27015
+                                                Arctic Ocean  #94db57  23281
+                                                  Tasman Sea  #87db57  20441
+                                                 Arabian Sea  #7adb57  20361
+                                               Norwegian Sea  #6ddb57  18428
+                                              Philippine Sea  #60db57  17645
+                                                  Aegean Sea  #57db5a  17587
+                                                   Coral Sea  #57db67  15475
+                                               Greenland Sea  #57db74  13470
+                                                  Baffin Bay  #57db81  10546
+                                                  Bering Sea  #57db8e   8853
+                  Inner Seas off the West Coast of\nScotland  #57db9c   6200
+                                               Caribbean Sea  #57dba9   5144
+                                               Bay of Biscay  #57dbb6   4100
+                                                Bismarck Sea  #57dbc3   3814
+                                                 Chukchi Sea  #57dbd0   3406
+                                      Great Australian Bight  #57dadb   3225
+                           Mediterranean Sea - Eastern Basin  #57cddb   3111
+                                             English Channel  #57c0db   2807
+                           Mediterranean Sea - Western Basin  #57b3db   2668
+                                                  Celtic Sea  #57a6db   2575
+                                                 Bass Strait  #5799db   2282
+                                              Gulf of Alaska  #578cdb   2033
+                                                  Hudson Bay  #577fdb   1963
+                                                     Red Sea  #5772db   1191
+                                              Tyrrhenian Sea  #5764db   1038
+                                               Hudson Strait  #5757db    993
+                                      Balearic (Iberian Sea)  #6357db    765
+                                                Gulf of Aden  #7057db    758
+                                                 Solomon Sea  #7d57db    757
+                                                   Timor Sea  #8a57db    747
+                                                Gulf of Riga  #9757db    646
+                                                Gulf of Oman  #a457db    623
+                                                Barentsz Sea  #b157db    589
+                                                  Ionian Sea  #be57db    490
+                                                   Black Sea  #cb57db    454
+                                                 Arafura Sea  #d857db    365
+                                               Laccadive Sea  #db57d1    337
+                          Irish Sea and St. George's Channel  #db57c4    238
+                                                  Baltic Sea  #db57b7    203
+                                              Gulf of Guinea  #db57aa    135
+                                                  Laptev Sea  #db579d    105
+                                                Persian Gulf  #db5790     93
+                                                 Lincoln Sea  #db5783     47
+                                                   Skagerrak  #db5776     43
+                                                    Kara Sea  #db5769     16
+                                                    Kattegat  #db575c      6
+2025-06-21 13:11:40,027 - INFO - Saved separate legend table with color swatches to /home/bhan/projects/wod/scripts/../stats/distributions/ocean_basins_legend_table.png
+2025-06-21 13:11:40,744 - INFO - 
+Summary for table: features_imputed
+2025-06-21 13:11:41,142 - INFO - 
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 2213706 entries, 0 to 2213705
+Data columns (total 11 columns):
+ #   Column       Dtype         
+---  ------       -----         
+ 0   row_id       int64         
+ 1   chlorophyll  float64       
+ 2   depth        float64       
+ 3   oxygen       float64       
+ 4   salinity     float64       
+ 5   temperature  float64       
+ 6   cast         int32         
+ 7   timestamp    datetime64[us]
+ 8   latitude     object        
+ 9   longitude    object        
+ 10  ocean_basin  object        
+dtypes: datetime64[us](1), float64(5), int32(1), int64(1), object(3)
+memory usage: 177.3+ MB
+
+2025-06-21 13:11:41,762 - INFO - 
+              row_id   chlorophyll         depth        oxygen      salinity   temperature          cast                   timestamp latitude longitude          ocean_basin
+count   2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06  2.213706e+06                     2213706  2213706   2213706              2213706
+unique           NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN    51947     57445                   61
+top              NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN  47.0000  -52.5867  North Pacific Ocean
+freq             NaN           NaN           NaN           NaN           NaN           NaN           NaN                         NaN    29210      8307               537106
+mean    1.106854e+06  9.665277e-01  3.660715e+02  2.217655e+02  3.352404e+01  8.309771e+00  1.412566e+07  2007-01-02 22:36:01.496802      NaN       NaN                  NaN
+min     1.000000e+00 -2.760000e-01  0.000000e+00  0.000000e+00  0.000000e+00 -2.054800e+00  8.440350e+05         1979-05-23 16:21:00      NaN       NaN                  NaN
+25%     5.534272e+05  4.250000e-02  3.000000e+01  1.830000e+02  3.237500e+01  2.058800e+00  1.074370e+07         2001-07-23 14:58:48      NaN       NaN                  NaN
+50%     1.106854e+06  1.612550e-01  7.500000e+01  2.260409e+02  3.405680e+01  6.891000e+00  1.319069e+07         2007-03-23 17:46:12      NaN       NaN                  NaN
+75%     1.660280e+06  5.870000e-01  2.750000e+02  2.764870e+02  3.485900e+01  1.183500e+01  1.773480e+07         2012-08-03 09:33:00      NaN       NaN                  NaN
+max     2.213706e+06  4.999400e+01  6.000000e+03  4.786490e+02  4.061300e+01  3.327300e+01  2.282467e+07         2024-03-28 05:31:12      NaN       NaN                  NaN
+std     6.390420e+05  3.287273e+00  7.648334e+02  8.004710e+01  2.175065e+00  7.870442e+00  4.318369e+06                         NaN      NaN       NaN                  NaN
