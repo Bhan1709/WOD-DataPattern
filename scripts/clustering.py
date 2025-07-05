@@ -12,6 +12,7 @@ from sklearn.decomposition import PCA
 import umap
 import joblib
 import os
+import re
 import matplotlib.pyplot as plt
 import seaborn as sns
 import traceback
@@ -59,6 +60,21 @@ def load_features():
         logging.error(f"Error loading data: {e}\n{traceback.format_exc()}")
         raise
 
+def get_next_model_index(method: str, model_dir: str=MODEL_DIR) -> int:
+    """
+    Scan the model directory and return the next available index for a given method.
+    Expects files in the format: {method}_{idx}_model.joblib
+    """
+    pattern = re.compile(rf"^{re.escape(method)}_(\d+)_model\.joblib$")
+    existing = []
+
+    if os.path.isdir(model_dir):
+        for fname in os.listdir(model_dir):
+            match = pattern.match(fname)
+            if match:
+                existing.append(int(match.group(1)))
+
+    return max(existing, default=-1) + 1
 
 # --- CLUSTERING EVALUATION ---
 @profile
@@ -104,15 +120,15 @@ def run_clustering_experiments(df, features):
         X = df[features].dropna()
         scaler = RobustScaler()
         X_scaled = scaler.fit_transform(X)
-        subset = resample(X_scaled, n_samples=100_000, replace=False, random_state=42)
+        X_scaled = X_scaled.astype(np.float32)
 
         results = []
 
         experiments = {
+            "hdbscan": ParameterGrid({"min_cluster_size": [250, 500, 750, 1000, 2500]}),
             "optics": ParameterGrid({"min_samples": [10, 25, 50, 100], "xi": [0.1, 0.25, 0.5]}),
-            "hdbscan": ParameterGrid({"min_cluster_size": [200, 500, 1000, 2500, 5000, 10000]}),
             "kmeans": ParameterGrid({"n_clusters": [3,5,10,15,20,25,30]}),
-            "minibatch": ParameterGrid({"n_clusters": [3,5,10,15,20,25,30], "batch_size": [1000, 5000, 10000, 25000, 50000, 75000, 100_000]}),
+            "minibatch": ParameterGrid({"n_clusters": [3,5,10,15,20,25,30], "batch_size": [5000, 10000, 25000, 50000, 75000, 100_000]}),
             "gmm": ParameterGrid({"n_components": [3,5,10,15,20,25,30]}),
             "birch": ParameterGrid({"n_clusters": [3,5,10,15,20,25,30], "threshold": [1.0, 2.5, 5.0, 7.5, 10.0]}),
         }
@@ -135,6 +151,7 @@ def run_clustering_experiments(df, features):
                         labels = model.fit_predict(X_scaled)
                         metrics = evaluate_clustering(X_scaled, labels)
                     elif method == "hdbscan":
+                        subset = resample(X_scaled, n_samples=100_000, replace=False, random_state=42)
                         model = hdbscan.HDBSCAN(**params)
                         labels = model.fit_predict(subset)
                         metrics = evaluate_clustering(subset, labels)
@@ -143,14 +160,15 @@ def run_clustering_experiments(df, features):
                         labels = model.fit_predict(X_scaled)
                         metrics = evaluate_clustering(X_scaled, labels)
                     elif method == "optics":
+                        subset = resample(X_scaled, n_samples=250_000, replace=False, random_state=42)
                         model = OPTICS(**params)
                         labels = model.fit_predict(subset)
                         metrics = evaluate_clustering(subset, labels)
                     else:
                         continue
                     
-                    # metrics = evaluate_clustering(X_scaled, labels)
-                    param_id = f"{method}_{idx}"
+                    id = get_next_model_index(method)
+                    param_id = f"{method}_{id}"
                     joblib.dump(model, os.path.join(MODEL_DIR, f"{param_id}_model.joblib"))
                     np.save(os.path.join(MODEL_DIR, f"{param_id}_labels.npy"), labels)
 

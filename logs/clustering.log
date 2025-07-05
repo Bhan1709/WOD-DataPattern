@@ -1,0 +1,114 @@
+2025-07-04 16:14:20,257 - INFO - Running HDBSCAN experiments...
+2025-07-04 16:15:59,234 - INFO - HDBSCAN | Params: {'min_cluster_size': 250} | Silhouette: 0.886940598487854, CH: 44784.33984375, DB: 2.3978862997202843
+2025-07-04 16:17:36,186 - INFO - HDBSCAN | Params: {'min_cluster_size': 500} | Silhouette: 0.20622771978378296, CH: 6342.6171875, DB: 1.854761142943229
+2025-07-04 16:19:19,220 - INFO - HDBSCAN | Params: {'min_cluster_size': 750} | Silhouette: -0.2808995544910431, CH: 1046.0587158203125, DB: 2.1510865672244637
+2025-07-04 16:21:14,701 - INFO - HDBSCAN | Params: {'min_cluster_size': 1000} | Silhouette: -0.3201805353164673, CH: 864.22314453125, DB: 1.8993079780830897
+2025-07-04 16:23:27,120 - INFO - HDBSCAN | Params: {'min_cluster_size': 2500} | Silhouette: -0.3213062882423401, CH: 829.3442993164062, DB: 1.8341308422441305
+2025-07-04 16:23:27,125 - INFO - Running OPTICS experiments...
+2025-07-04 17:05:05,013 - INFO - OPTICS | Params: {'min_samples': 10, 'xi': 0.1} | Silhouette: -0.7557434439659119, CH: 45.246822357177734, DB: 1.0421043942590733
+2025-07-04 17:43:28,297 - INFO - OPTICS | Params: {'min_samples': 10, 'xi': 0.25} | Silhouette: -0.7381064295768738, CH: 82.94252014160156, DB: 0.9427006598814973
+2025-07-04 18:21:25,723 - INFO - OPTICS | Params: {'min_samples': 10, 'xi': 0.5} | Silhouette: -0.5104979872703552, CH: 175.61167907714844, DB: 0.7747887685474661
+2025-07-04 18:59:10,538 - INFO - OPTICS | Params: {'min_samples': 25, 'xi': 0.1} | Silhouette: -0.5142138004302979, CH: 160.64414978027344, DB: 0.7859292181203877
+2025-07-04 19:38:41,651 - INFO - OPTICS | Params: {'min_samples': 25, 'xi': 0.25} | Silhouette: -0.39982354640960693, CH: 317.6679992675781, DB: 0.8662802758885567
+2025-07-04 20:14:45,237 - INFO - OPTICS | Params: {'min_samples': 25, 'xi': 0.5} | Silhouette: None, CH: None, DB: None
+2025-07-04 20:52:28,200 - INFO - OPTICS | Params: {'min_samples': 50, 'xi': 0.1} | Silhouette: -0.38410401344299316, CH: 779.4512939453125, DB: 0.7998007295457978
+2025-07-04 21:29:54,700 - INFO - OPTICS | Params: {'min_samples': 50, 'xi': 0.25} | Silhouette: 0.3806946873664856, CH: 500.0333251953125, DB: 0.37004555295762165
+2025-07-04 22:06:08,649 - INFO - OPTICS | Params: {'min_samples': 50, 'xi': 0.5} | Silhouette: None, CH: None, DB: None
+2025-07-04 22:44:48,587 - INFO - OPTICS | Params: {'min_samples': 100, 'xi': 0.1} | Silhouette: -0.12715010344982147, CH: 1435.1005859375, DB: 0.6755370648919126
+2025-07-04 23:24:11,067 - INFO - OPTICS | Params: {'min_samples': 100, 'xi': 0.25} | Silhouette: 0.36250120401382446, CH: 318.29925537109375, DB: 0.5270728467148533
+2025-07-05 00:02:42,877 - INFO - OPTICS | Params: {'min_samples': 100, 'xi': 0.5} | Silhouette: None, CH: None, DB: None
+2025-07-05 00:02:42,882 - INFO - Running KMEANS experiments...
+2025-07-05 00:04:25,951 - INFO - KMEANS | Params: {'n_clusters': 3} | Silhouette: 0.7404988408088684, CH: 2116487.25, DB: 0.5473259766292856
+2025-07-05 00:06:03,037 - INFO - KMEANS | Params: {'n_clusters': 5} | Silhouette: 0.5209934711456299, CH: 2927292.5, DB: 0.6066746188587687
+2025-07-05 00:07:33,825 - INFO - KMEANS | Params: {'n_clusters': 10} | Silhouette: 0.34544920921325684, CH: 3420830.25, DB: 0.7386214454047094
+2025-07-05 00:09:11,609 - INFO - KMEANS | Params: {'n_clusters': 15} | Silhouette: 0.3177907168865204, CH: 3465411.5, DB: 0.8286830563914478
+2025-07-05 00:10:45,024 - INFO - KMEANS | Params: {'n_clusters': 20} | Silhouette: 0.30018576979637146, CH: 3327675.0, DB: 0.8473824179440094
+2025-07-05 00:12:16,218 - INFO - KMEANS | Params: {'n_clusters': 25} | Silhouette: 0.3011351525783539, CH: 3243773.25, DB: 0.8492965773876636
+2025-07-05 00:13:45,469 - INFO - KMEANS | Params: {'n_clusters': 30} | Silhouette: 0.28389209508895874, CH: 3098599.5, DB: 0.9102960880209625
+2025-07-05 00:13:45,474 - INFO - Running MINIBATCH experiments...
+2025-07-05 00:15:25,470 - INFO - MINIBATCH | Params: {'batch_size': 5000, 'n_clusters': 3} | Silhouette: 0.656229555606842, CH: 2811222.0, DB: 0.5498743071671665
+2025-07-05 00:16:58,064 - INFO - MINIBATCH | Params: {'batch_size': 5000, 'n_clusters': 5} | Silhouette: 0.5379632711410522, CH: 2950601.0, DB: 0.6652124550004208
+2025-07-05 00:18:26,142 - INFO - MINIBATCH | Params: {'batch_size': 5000, 'n_clusters': 10} | Silhouette: 0.2573009133338928, CH: 2184324.25, DB: 0.9385452296495641
+2025-07-05 00:19:53,314 - INFO - MINIBATCH | Params: {'batch_size': 5000, 'n_clusters': 15} | Silhouette: 0.28187039494514465, CH: 2611685.75, DB: 0.9349133422864632
+2025-07-05 00:21:23,714 - INFO - MINIBATCH | Params: {'batch_size': 5000, 'n_clusters': 20} | Silhouette: 0.2899513840675354, CH: 2763543.5, DB: 0.9754923338525062
+2025-07-05 00:22:54,599 - INFO - MINIBATCH | Params: {'batch_size': 5000, 'n_clusters': 25} | Silhouette: 0.25653499364852905, CH: 2542036.75, DB: 1.0394039050504176
+2025-07-05 00:24:22,705 - INFO - MINIBATCH | Params: {'batch_size': 5000, 'n_clusters': 30} | Silhouette: 0.2504323124885559, CH: 2616563.25, DB: 1.0218050466132822
+2025-07-05 00:26:05,732 - INFO - MINIBATCH | Params: {'batch_size': 10000, 'n_clusters': 3} | Silhouette: 0.6508927345275879, CH: 2807753.5, DB: 0.5611554223164195
+2025-07-05 00:27:48,827 - INFO - MINIBATCH | Params: {'batch_size': 10000, 'n_clusters': 5} | Silhouette: 0.5271696448326111, CH: 2798006.75, DB: 0.6232131341378608
+2025-07-05 00:29:22,052 - INFO - MINIBATCH | Params: {'batch_size': 10000, 'n_clusters': 10} | Silhouette: 0.3363693654537201, CH: 2362528.25, DB: 0.8377598731737466
+2025-07-05 00:30:57,791 - INFO - MINIBATCH | Params: {'batch_size': 10000, 'n_clusters': 15} | Silhouette: 0.28778430819511414, CH: 2219763.75, DB: 0.9637961024375401
+2025-07-05 00:32:33,309 - INFO - MINIBATCH | Params: {'batch_size': 10000, 'n_clusters': 20} | Silhouette: 0.2520085871219635, CH: 2053775.25, DB: 1.0435859551822713
+2025-07-05 00:34:08,509 - INFO - MINIBATCH | Params: {'batch_size': 10000, 'n_clusters': 25} | Silhouette: 0.2807967960834503, CH: 2763824.75, DB: 0.9661675771098701
+2025-07-05 00:35:42,822 - INFO - MINIBATCH | Params: {'batch_size': 10000, 'n_clusters': 30} | Silhouette: 0.26188334822654724, CH: 2607526.0, DB: 1.0064916632606424
+2025-07-05 00:37:27,368 - INFO - MINIBATCH | Params: {'batch_size': 25000, 'n_clusters': 3} | Silhouette: 0.6654823422431946, CH: 2076303.75, DB: 0.6403595188028938
+2025-07-05 00:39:08,749 - INFO - MINIBATCH | Params: {'batch_size': 25000, 'n_clusters': 5} | Silhouette: 0.5233634114265442, CH: 2844823.75, DB: 0.6223903844192176
+2025-07-05 00:40:42,880 - INFO - MINIBATCH | Params: {'batch_size': 25000, 'n_clusters': 10} | Silhouette: 0.2312401533126831, CH: 2646593.75, DB: 0.9900944244612617
+2025-07-05 00:42:13,176 - INFO - MINIBATCH | Params: {'batch_size': 25000, 'n_clusters': 15} | Silhouette: 0.315085768699646, CH: 3142017.75, DB: 0.8824160083427929
+2025-07-05 00:43:40,933 - INFO - MINIBATCH | Params: {'batch_size': 25000, 'n_clusters': 20} | Silhouette: 0.287193238735199, CH: 2807459.75, DB: 0.9053597552194234
+2025-07-05 00:45:08,970 - INFO - MINIBATCH | Params: {'batch_size': 25000, 'n_clusters': 25} | Silhouette: 0.2761121988296509, CH: 1979101.875, DB: 0.9889603493507079
+2025-07-05 00:46:35,591 - INFO - MINIBATCH | Params: {'batch_size': 25000, 'n_clusters': 30} | Silhouette: 0.24569502472877502, CH: 2778351.5, DB: 1.0187863787705875
+2025-07-05 00:48:05,769 - INFO - MINIBATCH | Params: {'batch_size': 50000, 'n_clusters': 3} | Silhouette: 0.6680556535720825, CH: 2807097.5, DB: 0.5262311017011344
+2025-07-05 00:49:33,760 - INFO - MINIBATCH | Params: {'batch_size': 50000, 'n_clusters': 5} | Silhouette: 0.26958322525024414, CH: 2682170.75, DB: 0.9302789790183443
+2025-07-05 00:51:08,547 - INFO - MINIBATCH | Params: {'batch_size': 50000, 'n_clusters': 10} | Silhouette: 0.3190760612487793, CH: 2720557.0, DB: 0.8095313778289336
+2025-07-05 00:52:42,261 - INFO - MINIBATCH | Params: {'batch_size': 50000, 'n_clusters': 15} | Silhouette: 0.2939039170742035, CH: 2470799.25, DB: 0.9525913187010902
+2025-07-05 00:54:13,373 - INFO - MINIBATCH | Params: {'batch_size': 50000, 'n_clusters': 20} | Silhouette: 0.2552356421947479, CH: 2659381.25, DB: 1.0234415059908457
+2025-07-05 00:55:47,084 - INFO - MINIBATCH | Params: {'batch_size': 50000, 'n_clusters': 25} | Silhouette: 0.2546270489692688, CH: 2678292.75, DB: 0.9901085029235963
+2025-07-05 00:57:19,894 - INFO - MINIBATCH | Params: {'batch_size': 50000, 'n_clusters': 30} | Silhouette: 0.2481972873210907, CH: 2458364.5, DB: 1.0437749529246103
+2025-07-05 00:59:00,109 - INFO - MINIBATCH | Params: {'batch_size': 75000, 'n_clusters': 3} | Silhouette: 0.6025437116622925, CH: 2715905.5, DB: 0.6374047760141903
+2025-07-05 01:00:39,445 - INFO - MINIBATCH | Params: {'batch_size': 75000, 'n_clusters': 5} | Silhouette: 0.5088821649551392, CH: 2419062.5, DB: 0.7018046965420982
+2025-07-05 01:02:10,073 - INFO - MINIBATCH | Params: {'batch_size': 75000, 'n_clusters': 10} | Silhouette: 0.28554001450538635, CH: 2892986.75, DB: 0.9018048685257917
+2025-07-05 01:03:41,699 - INFO - MINIBATCH | Params: {'batch_size': 75000, 'n_clusters': 15} | Silhouette: 0.2816515564918518, CH: 2785384.0, DB: 0.9095257083334753
+2025-07-05 01:04:58,572 - INFO - MINIBATCH | Params: {'batch_size': 75000, 'n_clusters': 20} | Silhouette: 0.291723370552063, CH: 2783280.5, DB: 0.942411298801216
+2025-07-05 01:06:30,374 - INFO - MINIBATCH | Params: {'batch_size': 75000, 'n_clusters': 25} | Silhouette: 0.26948150992393494, CH: 1938936.5, DB: 1.052490976606754
+2025-07-05 01:07:43,798 - INFO - MINIBATCH | Params: {'batch_size': 75000, 'n_clusters': 30} | Silhouette: 0.23909638822078705, CH: 2711261.0, DB: 1.0571163321543404
+2025-07-05 01:09:07,579 - INFO - MINIBATCH | Params: {'batch_size': 100000, 'n_clusters': 3} | Silhouette: 0.6505498290061951, CH: 2807625.25, DB: 0.5623326327071602
+2025-07-05 01:10:26,462 - INFO - MINIBATCH | Params: {'batch_size': 100000, 'n_clusters': 5} | Silhouette: 0.27611061930656433, CH: 2647223.75, DB: 0.9371969991214504
+2025-07-05 01:11:39,438 - INFO - MINIBATCH | Params: {'batch_size': 100000, 'n_clusters': 10} | Silhouette: 0.3077956438064575, CH: 2749523.75, DB: 0.914437190941744
+2025-07-05 01:12:54,125 - INFO - MINIBATCH | Params: {'batch_size': 100000, 'n_clusters': 15} | Silhouette: 0.2871009111404419, CH: 2761546.75, DB: 0.9281223518667839
+2025-07-05 01:14:10,062 - INFO - MINIBATCH | Params: {'batch_size': 100000, 'n_clusters': 20} | Silhouette: 0.27443626523017883, CH: 2206490.5, DB: 1.0132478463345593
+2025-07-05 01:15:24,683 - INFO - MINIBATCH | Params: {'batch_size': 100000, 'n_clusters': 25} | Silhouette: 0.28103774785995483, CH: 2794910.75, DB: 0.9187210732298164
+2025-07-05 01:16:40,791 - INFO - MINIBATCH | Params: {'batch_size': 100000, 'n_clusters': 30} | Silhouette: 0.2528119683265686, CH: 2564077.0, DB: 1.0472461388648697
+2025-07-05 01:16:40,795 - INFO - Running GMM experiments...
+2025-07-05 01:18:38,860 - INFO - GMM | Params: {'n_components': 3} | Silhouette: 0.30411094427108765, CH: 481445.59375, DB: 1.2364640738797419
+2025-07-05 01:20:38,241 - INFO - GMM | Params: {'n_components': 5} | Silhouette: 0.12491074204444885, CH: 307457.34375, DB: 2.125955049652413
+2025-07-05 01:22:56,076 - INFO - GMM | Params: {'n_components': 10} | Silhouette: 0.13313451409339905, CH: 412787.78125, DB: 1.8307818125743336
+2025-07-05 01:27:50,565 - INFO - GMM | Params: {'n_components': 15} | Silhouette: 0.055791355669498444, CH: 334256.5625, DB: 2.7751398195674195
+2025-07-05 01:31:13,559 - INFO - GMM | Params: {'n_components': 20} | Silhouette: 0.05939995497465134, CH: 387792.96875, DB: 6.553838892197348
+2025-07-05 01:38:00,907 - INFO - GMM | Params: {'n_components': 25} | Silhouette: 0.008525635115802288, CH: 316394.75, DB: 2.382678205996988
+2025-07-05 01:42:25,391 - INFO - GMM | Params: {'n_components': 30} | Silhouette: 0.016055336222052574, CH: 297461.84375, DB: 4.335367188189481
+2025-07-05 01:42:25,396 - INFO - Running BIRCH experiments...
+2025-07-05 01:46:35,900 - INFO - BIRCH | Params: {'n_clusters': 3, 'threshold': 1.0} | Silhouette: 0.8668601512908936, CH: 1714523.625, DB: 0.43930170536957824
+2025-07-05 01:50:10,273 - INFO - BIRCH | Params: {'n_clusters': 3, 'threshold': 2.5} | Silhouette: 0.8872606754302979, CH: 1370897.625, DB: 0.3953070565512829
+2025-07-05 01:52:48,681 - INFO - BIRCH | Params: {'n_clusters': 3, 'threshold': 5.0} | Silhouette: 0.8884963393211365, CH: 1323639.125, DB: 0.3899544025718296
+2025-07-05 01:54:04,181 - INFO - BIRCH | Params: {'n_clusters': 3, 'threshold': 7.5} | Silhouette: None, CH: None, DB: None
+2025-07-05 01:55:20,689 - INFO - BIRCH | Params: {'n_clusters': 3, 'threshold': 10.0} | Silhouette: None, CH: None, DB: None
+2025-07-05 01:59:18,807 - INFO - BIRCH | Params: {'n_clusters': 5, 'threshold': 1.0} | Silhouette: 0.5708534121513367, CH: 1348931.375, DB: 0.6153031939782705
+2025-07-05 02:02:40,937 - INFO - BIRCH | Params: {'n_clusters': 5, 'threshold': 2.5} | Silhouette: 0.724232017993927, CH: 2015768.25, DB: 0.46544500675783923
+2025-07-05 02:05:24,696 - INFO - BIRCH | Params: {'n_clusters': 5, 'threshold': 5.0} | Silhouette: 0.7614723443984985, CH: 1187481.125, DB: 0.47957155507196286
+2025-07-05 02:06:40,965 - INFO - BIRCH | Params: {'n_clusters': 5, 'threshold': 7.5} | Silhouette: None, CH: None, DB: None
+2025-07-05 02:07:55,766 - INFO - BIRCH | Params: {'n_clusters': 5, 'threshold': 10.0} | Silhouette: None, CH: None, DB: None
+2025-07-05 02:11:52,695 - INFO - BIRCH | Params: {'n_clusters': 10, 'threshold': 1.0} | Silhouette: 0.345782607793808, CH: 668067.125, DB: 0.7065959761796277
+2025-07-05 02:15:15,937 - INFO - BIRCH | Params: {'n_clusters': 10, 'threshold': 2.5} | Silhouette: 0.5407804846763611, CH: 1422623.375, DB: 0.7631862188236991
+2025-07-05 02:17:55,784 - INFO - BIRCH | Params: {'n_clusters': 10, 'threshold': 5.0} | Silhouette: 0.6603485345840454, CH: 1473171.5, DB: 0.6192101089378739
+2025-07-05 02:19:12,565 - INFO - BIRCH | Params: {'n_clusters': 10, 'threshold': 7.5} | Silhouette: None, CH: None, DB: None
+2025-07-05 02:20:27,576 - INFO - BIRCH | Params: {'n_clusters': 10, 'threshold': 10.0} | Silhouette: None, CH: None, DB: None
+2025-07-05 02:24:19,138 - INFO - BIRCH | Params: {'n_clusters': 15, 'threshold': 1.0} | Silhouette: 0.46566253900527954, CH: 1044254.3125, DB: 0.6923193870917024
+2025-07-05 02:27:45,690 - INFO - BIRCH | Params: {'n_clusters': 15, 'threshold': 2.5} | Silhouette: 0.5016056895256042, CH: 974372.9375, DB: 0.8658976820123852
+2025-07-05 02:30:26,161 - INFO - BIRCH | Params: {'n_clusters': 15, 'threshold': 5.0} | Silhouette: 0.5127505660057068, CH: 1372461.0, DB: 0.7043380464108029
+2025-07-05 02:31:41,462 - INFO - BIRCH | Params: {'n_clusters': 15, 'threshold': 7.5} | Silhouette: None, CH: None, DB: None
+2025-07-05 02:32:57,022 - INFO - BIRCH | Params: {'n_clusters': 15, 'threshold': 10.0} | Silhouette: None, CH: None, DB: None
+2025-07-05 02:36:51,486 - INFO - BIRCH | Params: {'n_clusters': 20, 'threshold': 1.0} | Silhouette: 0.38820821046829224, CH: 786090.8125, DB: 0.7865132740220431
+2025-07-05 02:40:15,617 - INFO - BIRCH | Params: {'n_clusters': 20, 'threshold': 2.5} | Silhouette: 0.46293213963508606, CH: 786596.5625, DB: 0.8319923125252414
+2025-07-05 02:42:57,242 - INFO - BIRCH | Params: {'n_clusters': 20, 'threshold': 5.0} | Silhouette: 0.5127505660057068, CH: 1372461.0, DB: 0.7043380464108029
+2025-07-05 02:44:12,965 - INFO - BIRCH | Params: {'n_clusters': 20, 'threshold': 7.5} | Silhouette: None, CH: None, DB: None
+2025-07-05 02:45:28,535 - INFO - BIRCH | Params: {'n_clusters': 20, 'threshold': 10.0} | Silhouette: None, CH: None, DB: None
+2025-07-05 02:49:30,531 - INFO - BIRCH | Params: {'n_clusters': 25, 'threshold': 1.0} | Silhouette: 0.3867003917694092, CH: 846732.5625, DB: 0.8364459782139566
+2025-07-05 02:52:55,436 - INFO - BIRCH | Params: {'n_clusters': 25, 'threshold': 2.5} | Silhouette: 0.4904460906982422, CH: 1132250.25, DB: 0.7566777002368714
+2025-07-05 02:55:38,132 - INFO - BIRCH | Params: {'n_clusters': 25, 'threshold': 5.0} | Silhouette: 0.5127505660057068, CH: 1372461.0, DB: 0.7043380464108029
+2025-07-05 02:56:54,083 - INFO - BIRCH | Params: {'n_clusters': 25, 'threshold': 7.5} | Silhouette: None, CH: None, DB: None
+2025-07-05 02:58:11,801 - INFO - BIRCH | Params: {'n_clusters': 25, 'threshold': 10.0} | Silhouette: None, CH: None, DB: None
+2025-07-05 03:02:16,004 - INFO - BIRCH | Params: {'n_clusters': 30, 'threshold': 1.0} | Silhouette: 0.38603660464286804, CH: 708512.125, DB: 0.8659475589638915
+2025-07-05 03:05:38,573 - INFO - BIRCH | Params: {'n_clusters': 30, 'threshold': 2.5} | Silhouette: 0.48665475845336914, CH: 942497.625, DB: 0.750494377929489
+2025-07-05 03:08:17,679 - INFO - BIRCH | Params: {'n_clusters': 30, 'threshold': 5.0} | Silhouette: 0.5127505660057068, CH: 1372461.0, DB: 0.7043380464108029
+2025-07-05 03:09:33,154 - INFO - BIRCH | Params: {'n_clusters': 30, 'threshold': 7.5} | Silhouette: None, CH: None, DB: None
+2025-07-05 03:10:50,767 - INFO - BIRCH | Params: {'n_clusters': 30, 'threshold': 10.0} | Silhouette: None, CH: None, DB: None
