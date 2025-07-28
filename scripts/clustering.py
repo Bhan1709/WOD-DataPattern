@@ -124,13 +124,22 @@ def run_clustering_experiments(df, features):
 
         results = []
 
+        # experiments = {
+        #    "hdbscan": ParameterGrid({"min_cluster_size": [250, 500, 750, 1000, 2500]}),
+        #    "optics": ParameterGrid({"min_samples": [10, 25, 50, 100], "xi": [0.1, 0.25, 0.5]}),
+        #    "kmeans": ParameterGrid({"n_clusters": [3,5,10,15,20,25,30]}),
+        #    "minibatch": ParameterGrid({"n_clusters": [3,5,10,15,20,25,30], "batch_size": [5000, 10000, 25000, 50000, 75000, 100_000]}),
+        #    "gmm": ParameterGrid({"n_components": [3,5,10,15,20,25,30]}),
+        #    "birch": ParameterGrid({"n_clusters": [3,5,10,15,20,25,30], "threshold": [1.0, 2.5, 5.0, 7.5, 10.0]}),
+        #}
+
         experiments = {
-            "hdbscan": ParameterGrid({"min_cluster_size": [250, 500, 750, 1000, 2500]}),
-            "optics": ParameterGrid({"min_samples": [10, 25, 50, 100], "xi": [0.1, 0.25, 0.5]}),
-            "kmeans": ParameterGrid({"n_clusters": [3,5,10,15,20,25,30]}),
-            "minibatch": ParameterGrid({"n_clusters": [3,5,10,15,20,25,30], "batch_size": [5000, 10000, 25000, 50000, 75000, 100_000]}),
-            "gmm": ParameterGrid({"n_components": [3,5,10,15,20,25,30]}),
-            "birch": ParameterGrid({"n_clusters": [3,5,10,15,20,25,30], "threshold": [1.0, 2.5, 5.0, 7.5, 10.0]}),
+            "hdbscan": ParameterGrid({"min_cluster_size": [50, 100, 150, 200]}),
+            "optics": ParameterGrid({"min_samples": [100, 150, 200], "xi": [0.3, 0.4]}),
+            "kmeans": ParameterGrid({"n_clusters": [2]}),
+            "minibatch": ParameterGrid({"n_clusters": [2], "batch_size": [5000, 10000, 25000, 50000, 75000, 100_000]}),
+            "gmm": ParameterGrid({"n_components": [2]}),
+            "birch": ParameterGrid({"n_clusters": [2], "threshold": [1.0, 2.5, 5.0]}),
         }
 
         
@@ -172,10 +181,10 @@ def run_clustering_experiments(df, features):
                     joblib.dump(model, os.path.join(MODEL_DIR, f"{param_id}_model.joblib"))
                     np.save(os.path.join(MODEL_DIR, f"{param_id}_labels.npy"), labels)
 
-                    log_msg = f"{method.upper()} | Params: {params} | Silhouette: {metrics['silhouette']}, CH: {metrics['calinski_harabasz']}, DB: {metrics['davies_bouldin']}"
+                    log_msg = f"{id} | {method.upper()} | Params: {params} | Silhouette: {metrics['silhouette']}, CH: {metrics['calinski_harabasz']}, DB: {metrics['davies_bouldin']}"
                     logging.info(log_msg)
 
-                    pd.DataFrame([{"method": method, **params, **metrics}]).to_csv(
+                    pd.DataFrame([{"idx": id, "method": method, **params, **metrics}]).to_csv(
                         LOGGED_EXPERIMENTS_PATH, mode='a', header=not os.path.exists(LOGGED_EXPERIMENTS_PATH), index=False
                     )
 
@@ -267,15 +276,55 @@ def save_best_models(results, X_scaled, df):
         logging.error(f"Error saving model results: {e}\n{traceback.format_exc()}")
         raise
 
+def compute_combined_clustering_score(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+
+    # Coerce empty strings or invalid entries to NaN
+    df['silhouette'] = pd.to_numeric(df['silhouette'], errors='coerce')
+    df['calinski_harabasz'] = pd.to_numeric(df['calinski_harabasz'], errors='coerce')
+    df['davies_bouldin'] = pd.to_numeric(df['davies_bouldin'], errors='coerce')
+
+    # Normalize silhouette: [-1, 1] → [0, 1]
+    df['silhouette_norm'] = (df['silhouette'] + 1) / 2
+
+    # Normalize CH
+    max_ch = df['calinski_harabasz'].max()
+    df['calinski_harabasz_norm'] = np.log1p(df['calinski_harabasz']) / np.log1p(max_ch)
+
+    # Normalize DB
+    df['davies_bouldin_norm'] = 1 / (df['davies_bouldin'] + 1)
+
+    # Compute combined score only where all metrics are valid
+    valid_mask = df[['silhouette_norm', 'calinski_harabasz_norm', 'davies_bouldin_norm']].notnull().all(axis=1)
+    df['combined_score'] = np.where(
+        valid_mask,
+        (
+            df['silhouette_norm'] *
+            df['calinski_harabasz_norm'] *
+            df['davies_bouldin_norm']
+        ) ** (1 / 3),
+        np.nan
+    )
+
+    # Drop intermediate columns
+    df.drop(columns=['silhouette_norm', 'calinski_harabasz_norm', 'davies_bouldin_norm'], inplace=True)
+
+    return df
+
 # --- MAIN ---
 if __name__ == "__main__":
     try:
-        df = load_features()
-        results, X_scaled, used_df = run_clustering_experiments(df, FEATURES)
-        if not results:
-            logging.error("No valid clustering results found. Exiting.")
-            sys.exit(1)
-        save_best_models(results, X_scaled, used_df)
+        # df = load_features()
+        # results, X_scaled, used_df = run_clustering_experiments(df, FEATURES)
+        # if not results:
+            #logging.error("No valid clustering results found. Exiting.")
+            #sys.exit(1)
+        # save_best_models(results, X_scaled, used_df)
+        if not os.path.exists(LOGGED_EXPERIMENTS_PATH):
+            raise FileNotFoundError(f"CSV file not found at: {LOGGED_EXPERIMENTS_PATH}")
+        df = pd.read_csv(LOGGED_EXPERIMENTS_PATH)
+        df_updated = compute_combined_clustering_score(df)
+        df_updated.to_csv(LOGGED_EXPERIMENTS_PATH, index=False)
     except Exception as main_error:
         logging.critical(f"Fatal error in clustering pipeline: {main_error}\n{traceback.format_exc()}")
         raise

@@ -4,6 +4,7 @@
 /geopandamaps/
 /include/
 /share/
+/trained_models/
 pyvenv.cfg
 
 # Byte-compiled / optimized / DLL files

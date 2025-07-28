@@ -111,4 +111,114 @@
 2025-07-05 03:05:38,573 - INFO - BIRCH | Params: {'n_clusters': 30, 'threshold': 2.5} | Silhouette: 0.48665475845336914, CH: 942497.625, DB: 0.750494377929489
 2025-07-05 03:08:17,679 - INFO - BIRCH | Params: {'n_clusters': 30, 'threshold': 5.0} | Silhouette: 0.5127505660057068, CH: 1372461.0, DB: 0.7043380464108029
 2025-07-05 03:09:33,154 - INFO - BIRCH | Params: {'n_clusters': 30, 'threshold': 7.5} | Silhouette: None, CH: None, DB: None
-2025-07-05 03:10:50,767 - INFO - BIRCH | Params: {'n_clusters': 30, 'threshold': 10.0} | Silhouette: None, CH: None, DB: None
+2025-07-05 03:10:50,767 - INFO - BIRCH | Params: {'n_clusters': 30, 'threshold': 10.0} | Silhouette: None, CH: None, DB: None2025-07-05 15:07:03,706 - INFO - Running HDBSCAN experiments...
+2025-07-05 15:08:34,419 - INFO - HDBSCAN | Params: {'min_cluster_size': 50} | Silhouette: 0.7643781304359436, CH: 32695.2109375, DB: 1.2341288285712622
+2025-07-05 15:10:15,178 - INFO - HDBSCAN | Params: {'min_cluster_size': 100} | Silhouette: 0.7977725863456726, CH: 25227.279296875, DB: 4.6413944601985015
+2025-07-05 15:11:50,329 - INFO - HDBSCAN | Params: {'min_cluster_size': 150} | Silhouette: 0.8762121796607971, CH: 38049.171875, DB: 3.7734509814853436
+2025-07-05 15:13:25,944 - INFO - HDBSCAN | Params: {'min_cluster_size': 200} | Silhouette: 0.8610759377479553, CH: 44440.53515625, DB: 1.8616194032226019
+2025-07-05 15:13:25,949 - INFO - Running OPTICS experiments...
+2025-07-05 15:53:15,242 - INFO - OPTICS | Params: {'min_samples': 100, 'xi': 0.3} | Silhouette: 0.3573281764984131, CH: 344.1363830566406, DB: 0.4378867757536341
+2025-07-05 16:32:42,868 - INFO - OPTICS | Params: {'min_samples': 100, 'xi': 0.4} | Silhouette: 0.6320589184761047, CH: 636.504638671875, DB: 0.2599734029427767
+2025-07-05 17:07:58,557 - ERROR - Error evaluating clustering: Number of labels is 1. Valid values are 2 to n_samples - 1 (inclusive)
+Traceback (most recent call last):
+  File "scripts/clustering.py", line 104, in evaluate_clustering
+    metrics["silhouette"] = silhouette_score(X, labels, sample_size=max_sample_size, random_state=42)
+                            ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 138, in silhouette_score
+    return float(np.mean(silhouette_samples(X, labels, metric=metric, **kwds)))
+                         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/utils/_param_validation.py", line 191, in wrapper
+    return func(*args, **kwargs)
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 296, in silhouette_samples
+    check_number_of_labels(len(le.classes_), n_samples)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 35, in check_number_of_labels
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Number of labels is 1. Valid values are 2 to n_samples - 1 (inclusive)
+
+2025-07-05 17:07:58,571 - INFO - OPTICS | Params: {'min_samples': 150, 'xi': 0.3} | Silhouette: None, CH: None, DB: None
+2025-07-05 17:43:24,106 - ERROR - Error evaluating clustering: Number of labels is 1. Valid values are 2 to n_samples - 1 (inclusive)
+Traceback (most recent call last):
+  File "scripts/clustering.py", line 104, in evaluate_clustering
+    metrics["silhouette"] = silhouette_score(X, labels, sample_size=max_sample_size, random_state=42)
+                            ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 138, in silhouette_score
+    return float(np.mean(silhouette_samples(X, labels, metric=metric, **kwds)))
+                         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/utils/_param_validation.py", line 191, in wrapper
+    return func(*args, **kwargs)
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 296, in silhouette_samples
+    check_number_of_labels(len(le.classes_), n_samples)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 35, in check_number_of_labels
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Number of labels is 1. Valid values are 2 to n_samples - 1 (inclusive)
+
+2025-07-05 17:43:24,119 - INFO - OPTICS | Params: {'min_samples': 150, 'xi': 0.4} | Silhouette: None, CH: None, DB: None
+2025-07-05 18:18:38,921 - ERROR - Error evaluating clustering: Number of labels is 1. Valid values are 2 to n_samples - 1 (inclusive)
+Traceback (most recent call last):
+  File "scripts/clustering.py", line 104, in evaluate_clustering
+    metrics["silhouette"] = silhouette_score(X, labels, sample_size=max_sample_size, random_state=42)
+                            ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 138, in silhouette_score
+    return float(np.mean(silhouette_samples(X, labels, metric=metric, **kwds)))
+                         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/utils/_param_validation.py", line 191, in wrapper
+    return func(*args, **kwargs)
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 296, in silhouette_samples
+    check_number_of_labels(len(le.classes_), n_samples)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 35, in check_number_of_labels
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Number of labels is 1. Valid values are 2 to n_samples - 1 (inclusive)
+
+2025-07-05 18:18:38,944 - INFO - OPTICS | Params: {'min_samples': 200, 'xi': 0.3} | Silhouette: None, CH: None, DB: None
+2025-07-05 18:55:51,843 - ERROR - Error evaluating clustering: Number of labels is 1. Valid values are 2 to n_samples - 1 (inclusive)
+Traceback (most recent call last):
+  File "scripts/clustering.py", line 104, in evaluate_clustering
+    metrics["silhouette"] = silhouette_score(X, labels, sample_size=max_sample_size, random_state=42)
+                            ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 138, in silhouette_score
+    return float(np.mean(silhouette_samples(X, labels, metric=metric, **kwds)))
+                         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/utils/_param_validation.py", line 191, in wrapper
+    return func(*args, **kwargs)
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 296, in silhouette_samples
+    check_number_of_labels(len(le.classes_), n_samples)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bhan/projects/wod/lib/python3.13/site-packages/sklearn/metrics/cluster/_unsupervised.py", line 35, in check_number_of_labels
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Number of labels is 1. Valid values are 2 to n_samples - 1 (inclusive)
+
+2025-07-05 18:55:51,857 - INFO - OPTICS | Params: {'min_samples': 200, 'xi': 0.4} | Silhouette: None, CH: None, DB: None
+2025-07-05 18:55:51,862 - INFO - Running KMEANS experiments...
+2025-07-05 18:57:21,057 - INFO - KMEANS | Params: {'n_clusters': 2} | Silhouette: 0.8816347718238831, CH: 2884109.0, DB: 0.3929496315593621
+2025-07-05 18:57:21,061 - INFO - Running MINIBATCH experiments...
+2025-07-05 18:58:51,299 - INFO - MINIBATCH | Params: {'batch_size': 5000, 'n_clusters': 2} | Silhouette: 0.5738609433174133, CH: 408578.1875, DB: 0.7571866902571863
+2025-07-05 19:00:26,977 - INFO - MINIBATCH | Params: {'batch_size': 10000, 'n_clusters': 2} | Silhouette: 0.8822734951972961, CH: 2883348.0, DB: 0.388188863726325
+2025-07-05 19:02:05,008 - INFO - MINIBATCH | Params: {'batch_size': 25000, 'n_clusters': 2} | Silhouette: 0.8822734951972961, CH: 2883225.0, DB: 0.3878172617153059
+2025-07-05 19:03:32,413 - INFO - MINIBATCH | Params: {'batch_size': 50000, 'n_clusters': 2} | Silhouette: 0.8817425966262817, CH: 2884085.5, DB: 0.3921330129101217
+2025-07-05 19:05:11,491 - INFO - MINIBATCH | Params: {'batch_size': 75000, 'n_clusters': 2} | Silhouette: 0.5421541929244995, CH: 399818.0, DB: 0.8330105186990415
+2025-07-05 19:06:51,588 - INFO - MINIBATCH | Params: {'batch_size': 100000, 'n_clusters': 2} | Silhouette: 0.881525993347168, CH: 2884043.25, DB: 0.3944061972054083
+2025-07-05 19:06:51,594 - INFO - Running GMM experiments...
+2025-07-05 19:08:45,993 - INFO - GMM | Params: {'n_components': 2} | Silhouette: 0.15815261006355286, CH: 225878.609375, DB: 1.6717722692457926
+2025-07-05 19:08:45,998 - INFO - Running BIRCH experiments...
+2025-07-05 19:12:54,415 - INFO - BIRCH | Params: {'n_clusters': 2, 'threshold': 1.0} | Silhouette: 0.8771406412124634, CH: 2850043.75, DB: 0.42131466812822205
+2025-07-05 19:16:35,302 - INFO - BIRCH | Params: {'n_clusters': 2, 'threshold': 2.5} | Silhouette: 0.8973792195320129, CH: 2469990.25, DB: 0.27812199419680617
+2025-07-05 19:19:32,156 - INFO - BIRCH | Params: {'n_clusters': 2, 'threshold': 5.0} | Silhouette: 0.898600161075592, CH: 2397923.75, DB: 0.2701655171962562
